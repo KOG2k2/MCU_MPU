@@ -38,15 +38,17 @@
 #define ENABLE_3_ON 0
 
 #define HALF_A_SEC 50
-#define QUARTER_A_SEC 25
-#define A_SEC 100
+#define SCANNING_FREQ 250
+#define REV_TIMER_UP 10
 
 #define HOUR 24
 #define MINUTE 60
 #define SECOND 60
 
 #define RESET_COUNTER 0
-#define DELAY 1000
+#define A_SEC 1000
+
+#define FINISH_TIMER 1
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -243,23 +245,23 @@ void updateClockBuffer(){
 
 void setTimer0(int duration){
 	timer0_counter = duration / TIMER_CYCLE ;
-	timer0_flag = 0;
+	timer0_flag = RESET_COUNTER;
 }
 
 void setTimer1(int duration){
 	timer1_counter = duration / TIMER_CYCLE ;
-	timer1_flag = 0;
+	timer1_flag = RESET_COUNTER;
 }
 
 void timer_run(){
-	if(timer0_counter > 0){
+	if(timer0_counter > RESET_COUNTER){
 		timer0_counter--;
-		if(timer0_counter == 0) timer0_flag = 1;
+		if(timer0_counter == RESET_COUNTER) timer0_flag = FINISH_TIMER;
 	}
 
-	if(timer1_counter > 0){
+	if(timer1_counter > RESET_COUNTER){
         timer1_counter--;
-        if(timer1_counter == 0) timer1_flag = 1;
+        if(timer1_counter == RESET_COUNTER) timer1_flag = FINISH_TIMER;
     }
 }
 
@@ -305,8 +307,8 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer0(10);
-  setTimer1(10);
+  setTimer0(REV_TIMER_UP);
+  setTimer1(REV_TIMER_UP);
   while (1)
   {
 	  if(timer0_flag == 1){
@@ -329,13 +331,13 @@ int main(void)
 		  second++;
 		  updateClockBuffer();
 
-		  setTimer0(1000);
+		  setTimer0(A_SEC);
 	  }
 
 	  if(timer1_flag == 1){
 			if(index_led < 0 || index_led > 3) index_led = 0;
 			update7SEG(index_led++);
-			setTimer1(250);
+			setTimer1(SCANNING_FREQ);
 		}
 	  }
     /* USER CODE END WHILE */

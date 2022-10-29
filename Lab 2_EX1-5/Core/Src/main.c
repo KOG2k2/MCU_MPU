@@ -32,10 +32,10 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ENABLE_0_ON 1
-#define ENABLE_1_ON 2
-#define ENABLE_2_ON 3
-#define ENABLE_3_ON 0
+#define ENABLE_0_ON 1	//hour
+#define ENABLE_1_ON 2	//hour
+#define ENABLE_2_ON 3	//minute
+#define ENABLE_3_ON 0	//minute
 
 #define HALF_A_SEC 50
 #define QUARTER_A_SEC 25
@@ -501,8 +501,6 @@ static uint16_t Counter_LED = A_SEC;
 static uint16_t enable = ENABLE_0_ON; //Bai 2
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-    //timer_run();
-
     Counter_7--;
     Counter_LED--;
     if(Counter_7 <= RESET_COUNTER){

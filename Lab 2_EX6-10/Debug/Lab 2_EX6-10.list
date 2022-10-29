@@ -35,15 +35,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  15 .debug_ranges 000008c8  00000000  00000000  0002a3a8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  000162a2  00000000  00000000  0002ac70  2**0
+ 16 .debug_macro  000162a8  00000000  00000000  0002ac70  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000093c7  00000000  00000000  00040f12  2**0
+ 17 .debug_line   000093c7  00000000  00000000  00040f18  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00081e35  00000000  00000000  0004a2d9  2**0
+ 18 .debug_str    00081e4b  00000000  00000000  0004a2df  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000cc10e  2**0
+ 19 .comment      00000053  00000000  00000000  000cc12a  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000026fc  00000000  00000000  000cc164  2**2
+ 20 .debug_frame  000026fc  00000000  00000000  000cc180  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -639,7 +639,6 @@ void update7SEG(int index){
  8000582:	b2db      	uxtb	r3, r3
  8000584:	4618      	mov	r0, r3
  8000586:	f7ff fde1 	bl	800014c <display7SEG>
-
 			break;
  800058a:	e000      	b.n	800058e <update7SEG+0x122>
 		default:
@@ -679,7 +678,6 @@ int Get_Chuc(int number){
  80005c8:	1ad3      	subs	r3, r2, r3
  80005ca:	4a06      	ldr	r2, [pc, #24]	; (80005e4 <Get_Chuc+0x44>)
  80005cc:	6013      	str	r3, [r2, #0]
-
 	return Hang_Chuc;
  80005ce:	4b05      	ldr	r3, [pc, #20]	; (80005e4 <Get_Chuc+0x44>)
  80005d0:	681b      	ldr	r3, [r3, #0]
@@ -714,7 +712,6 @@ int Get_Don_vi(int number){
  8000606:	1aca      	subs	r2, r1, r3
  8000608:	4b05      	ldr	r3, [pc, #20]	; (8000620 <Get_Don_vi+0x38>)
  800060a:	601a      	str	r2, [r3, #0]
-
 	return Hang_Don_Vi;
  800060c:	4b04      	ldr	r3, [pc, #16]	; (8000620 <Get_Don_vi+0x38>)
  800060e:	681b      	ldr	r3, [r3, #0]
@@ -802,7 +799,7 @@ void setTimer0(int duration){
  8000696:	fb92 f3f3 	sdiv	r3, r2, r3
  800069a:	4a06      	ldr	r2, [pc, #24]	; (80006b4 <setTimer0+0x2c>)
  800069c:	6013      	str	r3, [r2, #0]
-	timer0_flag = 0;
+	timer0_flag = RESET_COUNTER;
  800069e:	4b06      	ldr	r3, [pc, #24]	; (80006b8 <setTimer0+0x30>)
  80006a0:	2200      	movs	r2, #0
  80006a2:	601a      	str	r2, [r3, #0]
@@ -831,7 +828,7 @@ void setTimer1(int duration){
  80006ca:	fb92 f3f3 	sdiv	r3, r2, r3
  80006ce:	4a06      	ldr	r2, [pc, #24]	; (80006e8 <setTimer1+0x2c>)
  80006d0:	6013      	str	r3, [r2, #0]
-	timer1_flag = 0;
+	timer1_flag = RESET_COUNTER;
  80006d2:	4b06      	ldr	r3, [pc, #24]	; (80006ec <setTimer1+0x30>)
  80006d4:	2200      	movs	r2, #0
  80006d6:	601a      	str	r2, [r3, #0]
@@ -851,7 +848,7 @@ void setTimer1(int duration){
 void timer_run(){
  80006f0:	b480      	push	{r7}
  80006f2:	af00      	add	r7, sp, #0
-	if(timer0_counter > 0){
+	if(timer0_counter > RESET_COUNTER){
  80006f4:	4b11      	ldr	r3, [pc, #68]	; (800073c <timer_run+0x4c>)
  80006f6:	681b      	ldr	r3, [r3, #0]
  80006f8:	2b00      	cmp	r3, #0
@@ -862,7 +859,7 @@ void timer_run(){
  8000700:	3b01      	subs	r3, #1
  8000702:	4a0e      	ldr	r2, [pc, #56]	; (800073c <timer_run+0x4c>)
  8000704:	6013      	str	r3, [r2, #0]
-		if(timer0_counter == 0) timer0_flag = 1;
+		if(timer0_counter == RESET_COUNTER) timer0_flag = FINISH_TIMER;
  8000706:	4b0d      	ldr	r3, [pc, #52]	; (800073c <timer_run+0x4c>)
  8000708:	681b      	ldr	r3, [r3, #0]
  800070a:	2b00      	cmp	r3, #0
@@ -872,18 +869,18 @@ void timer_run(){
  8000712:	601a      	str	r2, [r3, #0]
 	}
 
-	if(timer1_counter > 0){
+	if(timer1_counter > RESET_COUNTER){
  8000714:	4b0b      	ldr	r3, [pc, #44]	; (8000744 <timer_run+0x54>)
  8000716:	681b      	ldr	r3, [r3, #0]
  8000718:	2b00      	cmp	r3, #0
  800071a:	dd0b      	ble.n	8000734 <timer_run+0x44>
-			timer1_counter--;
+        timer1_counter--;
  800071c:	4b09      	ldr	r3, [pc, #36]	; (8000744 <timer_run+0x54>)
  800071e:	681b      	ldr	r3, [r3, #0]
  8000720:	3b01      	subs	r3, #1
  8000722:	4a08      	ldr	r2, [pc, #32]	; (8000744 <timer_run+0x54>)
  8000724:	6013      	str	r3, [r2, #0]
-			if(timer1_counter == 0) timer1_flag = 1;
+        if(timer1_counter == RESET_COUNTER) timer1_flag = FINISH_TIMER;
  8000726:	4b07      	ldr	r3, [pc, #28]	; (8000744 <timer_run+0x54>)
  8000728:	681b      	ldr	r3, [r3, #0]
  800072a:	2b00      	cmp	r3, #0
@@ -891,7 +888,7 @@ void timer_run(){
  800072e:	4b06      	ldr	r3, [pc, #24]	; (8000748 <timer_run+0x58>)
  8000730:	2201      	movs	r2, #1
  8000732:	601a      	str	r2, [r3, #0]
-		}
+    }
 }
  8000734:	bf00      	nop
  8000736:	46bd      	mov	sp, r7
@@ -942,10 +939,10 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer0(10);
+  setTimer0(REV_TIMER_UP);
  8000766:	200a      	movs	r0, #10
  8000768:	f7ff ff8e 	bl	8000688 <setTimer0>
-  setTimer1(10);
+  setTimer1(REV_TIMER_UP);
  800076c:	200a      	movs	r0, #10
  800076e:	f7ff ffa5 	bl	80006bc <setTimer1>
   while (1)
@@ -1014,7 +1011,7 @@ int main(void)
 		  updateClockBuffer();
  80007ca:	f7ff ff2b 	bl	8000624 <updateClockBuffer>
 
-		  setTimer0(1000);
+		  setTimer0(A_SEC);
  80007ce:	f44f 707a 	mov.w	r0, #1000	; 0x3e8
  80007d2:	f7ff ff59 	bl	8000688 <setTimer0>
 	  }
@@ -1044,7 +1041,7 @@ int main(void)
  80007fc:	600a      	str	r2, [r1, #0]
  80007fe:	4618      	mov	r0, r3
  8000800:	f7ff fe34 	bl	800046c <update7SEG>
-			setTimer1(250);
+			setTimer1(SCANNING_FREQ);
  8000804:	20fa      	movs	r0, #250	; 0xfa
  8000806:	f7ff ff59 	bl	80006bc <setTimer1>
 	  if(timer0_flag == 1){

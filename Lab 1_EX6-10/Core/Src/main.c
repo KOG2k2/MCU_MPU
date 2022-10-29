@@ -212,9 +212,7 @@ int main(void)
             Hour_count++;
         }
 
-        if(Hour_count == HOUR_COUNT){
-            Hour_count = INITIAL_STATE;
-        }
+        if(Hour_count == HOUR_COUNT) Hour_count = INITIAL_STATE;
 
         clear_All_Clock();
         set_Number_on_Clock(Second_count);

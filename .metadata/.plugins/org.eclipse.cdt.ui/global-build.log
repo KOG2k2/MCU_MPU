@@ -3978,3 +3978,212 @@ Finished building: Lab 2_EX6-10.bin
 Finished building: Lab 2_EX6-10.list
  
  
+19:45:29 **** Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:399:17: error: 'YELLOW_WEST_ON' undeclared (first use in this function); did you mean 'YELLOW_WEST'?
+  399 |     currstate = YELLOW_WEST_ON;
+      |                 ^~~~~~~~~~~~~~
+      |                 YELLOW_WEST
+../Core/Src/main.c:399:17: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:346:4: warning: enumeration value 'YELLOW_WEST' not handled in switch [-Wswitch]
+  346 |    switch(currstate){
+      |    ^~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+19:45:48 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   6664	     52	   1588	   8304	   2070	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.hex
+ 
+ 
+Finished building: Lab 1_ EX1-5.list
+ 
+19:51:21 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   6596	     52	   1588	   8236	   202c	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.hex
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.list
+ 
+ 
+ 
+19:53:36 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   6596	     52	   1588	   8236	   202c	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.hex
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.list
+ 
+ 
+ 
+20:08:50 **** Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:57:1: error: expected ';', identifier or '(' before 'enum'
+   57 | enum ENABLE_ON enable = ENABLE_0;
+      | ^~~~
+../Core/Src/main.c: In function 'which_7SEG':
+../Core/Src/main.c:174:7: error: 'ENABLE_0_ON' undeclared (first use in this function); did you mean 'ENABLE_ON'?
+  174 |  case ENABLE_0_ON:
+      |       ^~~~~~~~~~~
+      |       ENABLE_ON
+../Core/Src/main.c:174:7: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:181:12: error: 'ENABLE_1_ON' undeclared (first use in this function); did you mean 'ENABLE_ON'?
+  181 |   *value = ENABLE_1_ON;
+      |            ^~~~~~~~~~~
+      |            ENABLE_ON
+../Core/Src/main.c:191:12: error: 'ENABLE_2_ON' undeclared (first use in this function); did you mean 'ENABLE_ON'?
+  191 |   *value = ENABLE_2_ON;
+      |            ^~~~~~~~~~~
+      |            ENABLE_ON
+../Core/Src/main.c:201:12: error: 'ENABLE_3_ON' undeclared (first use in this function); did you mean 'ENABLE_ON'?
+  201 |   *value = ENABLE_3_ON;
+      |            ^~~~~~~~~~~
+      |            ENABLE_ON
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:503:20: warning: passing argument 1 of 'which_7SEG' from incompatible pointer type [-Wincompatible-pointer-types]
+  503 |         which_7SEG(&enable);
+      |                    ^~~~~~~
+      |                    |
+      |                    enum ENABLE_ON *
+../Core/Src/main.c:172:27: note: expected 'uint16_t *' {aka 'short unsigned int *'} but argument is of type 'enum ENABLE_ON *'
+  172 | void which_7SEG(uint16_t *value){
+      |                 ~~~~~~~~~~^~~~~
+../Core/Src/main.c:503:9: warning: converting a packed 'enum ENABLE_ON' pointer (alignment 1) to a 'uint16_t' {aka 'short unsigned int'} pointer (alignment 2) may result in an unaligned pointer value [-Waddress-of-packed-member]
+  503 |         which_7SEG(&enable);
+      |         ^~~~~~~~~~
+../Core/Src/main.c:56:6: note: defined here
+   56 | enum ENABLE_ON {ENABLE_0, ENABLE_1, ENABLE_2, ENABLE_3}
+      |      ^~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+20:09:26 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:57:1: error: expected ';', identifier or '(' before 'enum'
+   57 | enum ENABLE_ON enable = ENABLE_0;
+      | ^~~~
+../Core/Src/main.c:57:25: error: 'ENABLE_0' undeclared here (not in a function); did you mean 'ENABLE_ON'?
+   57 | enum ENABLE_ON enable = ENABLE_0;
+      |                         ^~~~~~~~
+      |                         ENABLE_ON
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:503:20: warning: passing argument 1 of 'which_7SEG' from incompatible pointer type [-Wincompatible-pointer-types]
+  503 |         which_7SEG(&enable);
+      |                    ^~~~~~~
+      |                    |
+      |                    enum ENABLE_ON *
+../Core/Src/main.c:172:27: note: expected 'uint16_t *' {aka 'short unsigned int *'} but argument is of type 'enum ENABLE_ON *'
+  172 | void which_7SEG(uint16_t *value){
+      |                 ~~~~~~~~~~^~~~~
+../Core/Src/main.c:503:9: warning: converting a packed 'enum ENABLE_ON' pointer (alignment 1) to a 'uint16_t' {aka 'short unsigned int'} pointer (alignment 2) may result in an unaligned pointer value [-Waddress-of-packed-member]
+  503 |         which_7SEG(&enable);
+      |         ^~~~~~~~~~
+../Core/Src/main.c:56:6: note: defined here
+   56 | enum ENABLE_ON {ENABLE_0_ON, ENABLE_1_ON, ENABLE_2_ON, ENABLE_3_ON}
+      |      ^~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+20:09:50 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:57:1: error: expected ';', identifier or '(' before 'enum'
+   57 | enum enable_on enable = ENABLE_0;
+      | ^~~~
+../Core/Src/main.c:57:25: error: 'ENABLE_0' undeclared here (not in a function); did you mean 'ENABLE'?
+   57 | enum enable_on enable = ENABLE_0;
+      |                         ^~~~~~~~
+      |                         ENABLE
+../Core/Src/main.c: In function 'HAL_TIM_PeriodElapsedCallback':
+../Core/Src/main.c:503:20: warning: passing argument 1 of 'which_7SEG' from incompatible pointer type [-Wincompatible-pointer-types]
+  503 |         which_7SEG(&enable);
+      |                    ^~~~~~~
+      |                    |
+      |                    enum enable_on *
+../Core/Src/main.c:172:27: note: expected 'uint16_t *' {aka 'short unsigned int *'} but argument is of type 'enum enable_on *'
+  172 | void which_7SEG(uint16_t *value){
+      |                 ~~~~~~~~~~^~~~~
+../Core/Src/main.c:503:9: warning: converting a packed 'enum enable_on' pointer (alignment 1) to a 'uint16_t' {aka 'short unsigned int'} pointer (alignment 2) may result in an unaligned pointer value [-Waddress-of-packed-member]
+  503 |         which_7SEG(&enable);
+      |         ^~~~~~~~~~
+../Core/Src/main.c:56:6: note: defined here
+   56 | enum enable_on {ENABLE_0_ON, ENABLE_1_ON, ENABLE_2_ON, ENABLE_3_ON}
+      |      ^~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+20:11:34 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 2_EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 2_EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 2_EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 2_EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 2_EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 2_EX1-5.elf  > "Lab 2_EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8840	     56	   1656	  10552	   2938	Lab 2_EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 2_EX1-5.hex
+Finished building: Lab 2_EX1-5.bin
+ 
+ 
+Finished building: Lab 2_EX1-5.list
+ 
+20:15:58 **** Build of configuration Debug for project Lab 2_EX6-10 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 2_EX6-10.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 2_EX6-10\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 2_EX6-10.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 2_EX6-10.elf
+ 
+arm-none-eabi-size   Lab\ 2_EX6-10.elf 
+arm-none-eabi-objdump -h -S  Lab\ 2_EX6-10.elf  > "Lab 2_EX6-10.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 2_EX6-10.elf  "Lab 2_EX6-10.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 2_EX6-10.elf  "Lab 2_EX6-10.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8652	     52	   1668	  10372	   2884	Lab 2_EX6-10.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 2_EX6-10.hex
+Finished building: Lab 2_EX6-10.bin
+ 
+ 
+Finished building: Lab 2_EX6-10.list
+ 

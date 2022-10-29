@@ -75,6 +75,8 @@
 /* USER CODE BEGIN PV */
 int counter = 0;
 int timer_counter = GENERAL_COUNTER;
+enum state {RED_WEST_ON, RED_YELLOW_WEST, GREEN_WEST_ON, YELLOW_WEST_ON};
+enum state currstate = RED_WEST_ON;
 
 int RED_WEST_count = RED_COUNTER;
 int YELLOW_WEST_count = YELLOW_COUNTER;
@@ -261,34 +263,31 @@ void check7SEG(){
 }
 
 void LED_SWITCHING(){
-	if(RED_WEST_stat == ON){
-	  if(timer_counter == RESET_TIME){
+	if(RED_WEST_stat == ON && timer_counter == RESET_TIME){
 		  timer_counter = GENERAL_COUNTER;
 		  RED_WEST_stat = OFF;
 		  YELLOW_WEST_stat = ON;
-	  }
 	}
 
-	  if(YELLOW_WEST_stat == ON){
-		  if(timer_counter == RESET_TIME){
-			  timer_counter = GENERAL_COUNTER;
-			  RED_WEST_stat = ON;
-			  YELLOW_WEST_stat = OFF;
-		  }
+	  if(YELLOW_WEST_stat == ON && timer_counter == RESET_TIME){
+		  timer_counter = GENERAL_COUNTER;
+		  RED_WEST_stat = ON;
+		  YELLOW_WEST_stat = OFF;
 	  }
 
 	  if(RED_WEST_stat == ON){
 		  RED_WEST_ON();
 		  timer_counter--;
 	  }
-	  else RED_WEST_OFF();
+	  if(RED_WEST_stat == OFF) RED_WEST_OFF();
 
 	  if(YELLOW_WEST_stat == ON){
 		  YELLOW_WEST_ON();
 		  timer_counter--;
 	  }
-	  else YELLOW_WEST_OFF();
+	  if(YELLOW_WEST_stat == OFF) YELLOW_WEST_OFF();
 }
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -333,7 +332,7 @@ int main(void)
   while (1)
   {
 	  /*------------------EX1----------
-		2_LED_SWITCHING();
+		LED_SWITCHING();
 	  */
 
 	  /*------------------EX4----------
@@ -341,31 +340,94 @@ int main(void)
 	  */
 
 	  /*------------------EX2-3-5----------*/
-	  if(RED_WEST_stat == ON){
-		  if(RED_WEST_count == RESET_TIME){
-			  RED_WEST_count = RED_COUNTER;
-			  RED_WEST_stat = OFF;
-			  YELLOW_WEST_stat = OFF;
-			  GREEN_WEST_stat = ON;
+	  /*switch(currstate){
+	  case RED_WEST_ON:
+		  if(RED_WEST_stat == ON){
+			  if(RED_WEST_count == RESET_TIME){
+				  RED_WEST_count = RED_COUNTER;
+				  RED_WEST_stat = OFF;
+				  YELLOW_WEST_stat = OFF;
+				  GREEN_WEST_stat = ON;
+			  }
 		  }
+
+		  if(GREEN_NORTH_stat == ON){
+			  if(GREEN_NORTH_count == RESET_TIME){
+				  GREEN_NORTH_count = GREEN_COUNTER;
+				  RED_NORTH_stat = OFF;
+				  YELLOW_NORTH_stat = ON;
+				  GREEN_NORTH_stat = OFF;
+			  }
+		  }
+
+		  currstate = RED_YELLOW_WEST;
+		  break;
+	  case RED_YELLOW_WEST:
+		  if(YELLOW_WEST_stat == ON){
+			  if(YELLOW_WEST_count == RESET_TIME){
+				  YELLOW_WEST_count = YELLOW_COUNTER;
+				  RED_WEST_stat = ON;
+				  YELLOW_WEST_stat = OFF;
+				  GREEN_WEST_stat = OFF;
+			  }
+		  }
+
+		  currstate = GREEN_WEST_ON;
+		  break;
+	  case GREEN_WEST_ON:
+		  if(GREEN_WEST_stat == ON){
+			  if(GREEN_WEST_count == RESET_TIME){
+				  GREEN_WEST_count = GREEN_COUNTER;
+				  RED_WEST_stat = OFF;
+				  YELLOW_WEST_stat = ON;
+				  GREEN_WEST_stat = OFF;
+			  }
+		  }
+
+		  if(RED_NORTH_stat == ON){
+			  if(RED_NORTH_count == RESET_TIME){
+				  RED_NORTH_count = RED_COUNTER;
+				  RED_NORTH_stat = OFF;
+				  YELLOW_NORTH_stat = OFF;
+				  GREEN_NORTH_stat = ON;
+			  }
+		  }
+
+		  currstate = YELLOW_WEST_ON;
+		  break;
+	  case YELLOW_WEST_ON:
+		  if(YELLOW_WEST_stat == ON){
+			  if(YELLOW_WEST_count == RESET_TIME){
+				  YELLOW_WEST_count = YELLOW_COUNTER;
+				  RED_WEST_stat = ON;
+				  YELLOW_WEST_stat = OFF;
+				  GREEN_WEST_stat = OFF;
+			  }
+		  }
+
+		  currstate = RED_WEST_ON;
+		  break;
+	  }*/
+
+	  if(RED_WEST_stat == ON && RED_WEST_count == RESET_TIME){
+		  RED_WEST_count = RED_COUNTER;
+		  RED_WEST_stat = OFF;
+		  YELLOW_WEST_stat = OFF;
+		  GREEN_WEST_stat = ON;
 	  }
 
-	  if(GREEN_WEST_stat == ON){
-		  if(GREEN_WEST_count == RESET_TIME){
-			  GREEN_WEST_count = GREEN_COUNTER;
-			  RED_WEST_stat = OFF;
-			  YELLOW_WEST_stat = ON;
-			  GREEN_WEST_stat = OFF;
-		  }
+	  if(GREEN_WEST_stat == ON && GREEN_WEST_count == RESET_TIME){
+		  GREEN_WEST_count = GREEN_COUNTER;
+		  RED_WEST_stat = OFF;
+		  YELLOW_WEST_stat = ON;
+		  GREEN_WEST_stat = OFF;
 	  }
 
-	  if(YELLOW_WEST_stat == ON){
-		  if(YELLOW_WEST_count == RESET_TIME){
-			  YELLOW_WEST_count = YELLOW_COUNTER;
-			  RED_WEST_stat = ON;
-			  YELLOW_WEST_stat = OFF;
-			  GREEN_WEST_stat = OFF;
-		  }
+	  if(YELLOW_WEST_stat == ON && YELLOW_WEST_count == RESET_TIME){
+		  YELLOW_WEST_count = YELLOW_COUNTER;
+		  RED_WEST_stat = ON;
+		  YELLOW_WEST_stat = OFF;
+		  GREEN_WEST_stat = OFF;
 	  }
 
 	  if(RED_WEST_stat == ON){
@@ -373,7 +435,7 @@ int main(void)
 		  display7SEG(RED_WEST_count);
 		  RED_WEST_count--;
 	  }
-	  if(RED_WEST_stat == OFF)RED_WEST_OFF();
+	  if(RED_WEST_stat == OFF) RED_WEST_OFF();
 
 	  if(YELLOW_WEST_stat == ON){
 		  YELLOW_WEST_ON();
@@ -389,31 +451,25 @@ int main(void)
 	  }
 	  if(GREEN_WEST_stat == OFF) GREEN_WEST_OFF();
 
-	  if(RED_NORTH_stat == ON){
-		  if(RED_NORTH_count == RESET_TIME){
-			  RED_NORTH_count = RED_COUNTER;
-			  RED_NORTH_stat = OFF;
-			  YELLOW_NORTH_stat = OFF;
-			  GREEN_NORTH_stat = ON;
-		  }
+	  if(RED_NORTH_stat == ON && RED_NORTH_count == RESET_TIME){
+		  RED_NORTH_count = RED_COUNTER;
+		  RED_NORTH_stat = OFF;
+		  YELLOW_NORTH_stat = OFF;
+		  GREEN_NORTH_stat = ON;
 	  }
 
-	  if(GREEN_NORTH_stat == ON){
-		  if(GREEN_NORTH_count == RESET_TIME){
-			  GREEN_NORTH_count = GREEN_COUNTER;
-			  RED_NORTH_stat = OFF;
-			  YELLOW_NORTH_stat = ON;
-			  GREEN_NORTH_stat = OFF;
-		  }
+	  if(GREEN_NORTH_stat == ON && GREEN_NORTH_count == RESET_TIME){
+		  GREEN_NORTH_count = GREEN_COUNTER;
+		  RED_NORTH_stat = OFF;
+		  YELLOW_NORTH_stat = ON;
+		  GREEN_NORTH_stat = OFF;
 	  }
 
-	  if(YELLOW_NORTH_stat == ON){
-		  if(YELLOW_NORTH_count == RESET_TIME){
-			  YELLOW_NORTH_count = YELLOW_COUNTER;
-			  RED_NORTH_stat = ON;
-			  YELLOW_NORTH_stat = OFF;
-			  GREEN_NORTH_stat = OFF;
-		  }
+	  if(YELLOW_NORTH_stat == ON && YELLOW_NORTH_count == RESET_TIME){
+		  YELLOW_NORTH_count = YELLOW_COUNTER;
+		  RED_NORTH_stat = ON;
+		  YELLOW_NORTH_stat = OFF;
+		  GREEN_NORTH_stat = OFF;
 	  }
 
 	  if(RED_NORTH_stat == ON){
