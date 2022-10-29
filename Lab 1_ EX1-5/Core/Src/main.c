@@ -373,21 +373,21 @@ int main(void)
 		  display7SEG(RED_WEST_count);
 		  RED_WEST_count--;
 	  }
-	  else RED_WEST_OFF();
+	  if(RED_WEST_stat == OFF)RED_WEST_OFF();
 
 	  if(YELLOW_WEST_stat == ON){
 		  YELLOW_WEST_ON();
 		  display7SEG(YELLOW_WEST_count);
 		  YELLOW_WEST_count--;
 	  }
-	  else YELLOW_WEST_OFF();
+	  if(RED_WEST_stat == OFF) YELLOW_WEST_OFF();
 
 	  if(GREEN_WEST_stat == ON){
 		  GREEN_WEST_ON();
 		  display7SEG(GREEN_WEST_count);
 		  GREEN_WEST_count--;
 	  }
-	  else GREEN_WEST_OFF();
+	  if(GREEN_WEST_stat == OFF) GREEN_WEST_OFF();
 
 	  if(RED_NORTH_stat == ON){
 		  if(RED_NORTH_count == RESET_TIME){
@@ -421,21 +421,21 @@ int main(void)
 		  display7SEG2(RED_NORTH_count);
 		  RED_NORTH_count--;
 	  }
-	  else RED_NORTH_OFF();
+	  if(RED_NORTH_stat == OFF) RED_NORTH_OFF();
 
 	  if(YELLOW_NORTH_stat == ON){
 		  YELLOW_NORTH_ON();
 		  display7SEG2(YELLOW_NORTH_count);
 		  YELLOW_NORTH_count--;
 	  }
-	  else YELLOW_NORTH_OFF();
+	  if(YELLOW_NORTH_stat == OFF) YELLOW_NORTH_OFF();
 
 	  if(GREEN_NORTH_stat == ON){
 		  GREEN_NORTH_ON();
 		  display7SEG2(GREEN_NORTH_count);
 		  GREEN_NORTH_count--;
 	  }
-	  else GREEN_NORTH_OFF();
+	  if(GREEN_NORTH_stat == OFF) GREEN_NORTH_OFF();
 
 	  HAL_Delay(DELAY);
     /* USER CODE END WHILE */

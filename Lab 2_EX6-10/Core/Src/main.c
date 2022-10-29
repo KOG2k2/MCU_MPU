@@ -210,7 +210,6 @@ void update7SEG(int index){
 			HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
 			HAL_GPIO_WritePin(EN3_GPIO_Port, EN3_Pin, RESET);
 			display7SEG(led_buffer[index]);
-
 			break;
 		default:
 			break;
@@ -219,13 +218,11 @@ void update7SEG(int index){
 
 int Get_Chuc(int number){
 	Hang_Chuc = ((number%100/10));
-
 	return Hang_Chuc;
 }
 
 int Get_Don_vi(int number){
 	Hang_Don_Vi = (number%10);
-
 	return Hang_Don_Vi;
 }
 
@@ -261,9 +258,9 @@ void timer_run(){
 	}
 
 	if(timer1_counter > 0){
-			timer1_counter--;
-			if(timer1_counter == 0) timer1_flag = 1;
-		}
+        timer1_counter--;
+        if(timer1_counter == 0) timer1_flag = 1;
+    }
 }
 
 /* USER CODE END PFP */
