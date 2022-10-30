@@ -4187,3 +4187,206 @@ Finished building: Lab 2_EX6-10.bin
  
 Finished building: Lab 2_EX6-10.list
  
+10:21:32 **** Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display7SEG':
+../Core/Src/main.c:199:55: error: 'num' undeclared (first use in this function)
+  199 |  HAL_GPIO_WritePin(a1_GPIO_Port, a1_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                                                       ^~~
+../Core/Src/main.c:199:55: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:22:12 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   4864	     60	   1572	   6496	   1960	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.list
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.hex
+ 
+ 
+ 
+10:27:06 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   4864	     60	   1572	   6496	   1960	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.hex
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.list
+ 
+ 
+ 
+10:28:17 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display7SEG2':
+../Core/Src/main.c:115:55: error: 'num' undeclared (first use in this function)
+  115 |  HAL_GPIO_WritePin(a2_GPIO_Port, a2_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                                                       ^~~
+../Core/Src/main.c:115:55: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:28:27 **** Incremental Build of configuration Debug for project Lab 1_ EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 1_ EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 1_ EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 1_ EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 1_ EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 1_\ EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 1_\ EX1-5.elf  > "Lab 1_ EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 1_\ EX1-5.elf  "Lab 1_ EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   4864	     60	   1572	   6496	   1960	Lab 1_ EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 1_ EX1-5.hex
+Finished building: Lab 1_ EX1-5.bin
+Finished building: Lab 1_ EX1-5.list
+ 
+ 
+ 
+10:44:16 **** Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display7SEG':
+../Core/Src/main.c:81:20: error: 'a1_GPIO_Port' undeclared (first use in this function); did you mean 'a_GPIO_Port'?
+   81 |  HAL_GPIO_WritePin(a1_GPIO_Port, a1_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    a_GPIO_Port
+../Core/Src/main.c:81:20: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:81:34: error: 'a1_Pin' undeclared (first use in this function); did you mean 'a_Pin'?
+   81 |  HAL_GPIO_WritePin(a1_GPIO_Port, a1_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                                  ^~~~~~
+      |                                  a_Pin
+../Core/Src/main.c:81:55: error: 'num' undeclared (first use in this function)
+   81 |  HAL_GPIO_WritePin(a1_GPIO_Port, a1_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                                                       ^~~
+../Core/Src/main.c:82:20: error: 'b1_GPIO_Port' undeclared (first use in this function); did you mean 'b_GPIO_Port'?
+   82 |  HAL_GPIO_WritePin(b1_GPIO_Port, b1_Pin, ((LED_buffer[num] >> 1) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    b_GPIO_Port
+../Core/Src/main.c:82:34: error: 'b1_Pin' undeclared (first use in this function); did you mean 'b_Pin'?
+   82 |  HAL_GPIO_WritePin(b1_GPIO_Port, b1_Pin, ((LED_buffer[num] >> 1) & 0x01));
+      |                                  ^~~~~~
+      |                                  b_Pin
+../Core/Src/main.c:83:20: error: 'c1_GPIO_Port' undeclared (first use in this function); did you mean 'c_GPIO_Port'?
+   83 |  HAL_GPIO_WritePin(c1_GPIO_Port, c1_Pin, ((LED_buffer[num] >> 2) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    c_GPIO_Port
+../Core/Src/main.c:83:34: error: 'c1_Pin' undeclared (first use in this function); did you mean 'c_Pin'?
+   83 |  HAL_GPIO_WritePin(c1_GPIO_Port, c1_Pin, ((LED_buffer[num] >> 2) & 0x01));
+      |                                  ^~~~~~
+      |                                  c_Pin
+../Core/Src/main.c:84:20: error: 'd1_GPIO_Port' undeclared (first use in this function); did you mean 'd_GPIO_Port'?
+   84 |  HAL_GPIO_WritePin(d1_GPIO_Port, d1_Pin, ((LED_buffer[num] >> 3) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    d_GPIO_Port
+../Core/Src/main.c:84:34: error: 'd1_Pin' undeclared (first use in this function); did you mean 'd_Pin'?
+   84 |  HAL_GPIO_WritePin(d1_GPIO_Port, d1_Pin, ((LED_buffer[num] >> 3) & 0x01));
+      |                                  ^~~~~~
+      |                                  d_Pin
+../Core/Src/main.c:85:20: error: 'e1_GPIO_Port' undeclared (first use in this function); did you mean 'e_GPIO_Port'?
+   85 |  HAL_GPIO_WritePin(e1_GPIO_Port, e1_Pin, ((LED_buffer[num] >> 4) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    e_GPIO_Port
+../Core/Src/main.c:85:34: error: 'e1_Pin' undeclared (first use in this function); did you mean 'e_Pin'?
+   85 |  HAL_GPIO_WritePin(e1_GPIO_Port, e1_Pin, ((LED_buffer[num] >> 4) & 0x01));
+      |                                  ^~~~~~
+      |                                  e_Pin
+../Core/Src/main.c:86:20: error: 'f1_GPIO_Port' undeclared (first use in this function); did you mean 'f_GPIO_Port'?
+   86 |  HAL_GPIO_WritePin(f1_GPIO_Port, f1_Pin, ((LED_buffer[num] >> 5) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    f_GPIO_Port
+../Core/Src/main.c:86:34: error: 'f1_Pin' undeclared (first use in this function); did you mean 'f_Pin'?
+   86 |  HAL_GPIO_WritePin(f1_GPIO_Port, f1_Pin, ((LED_buffer[num] >> 5) & 0x01));
+      |                                  ^~~~~~
+      |                                  f_Pin
+../Core/Src/main.c:87:20: error: 'g1_GPIO_Port' undeclared (first use in this function); did you mean 'g_GPIO_Port'?
+   87 |  HAL_GPIO_WritePin(g1_GPIO_Port, g1_Pin, ((LED_buffer[num] >> 6) & 0x01));
+      |                    ^~~~~~~~~~~~
+      |                    g_GPIO_Port
+../Core/Src/main.c:87:34: error: 'g1_Pin' undeclared (first use in this function); did you mean 'g_Pin'?
+   87 |  HAL_GPIO_WritePin(g1_GPIO_Port, g1_Pin, ((LED_buffer[num] >> 6) & 0x01));
+      |                                  ^~~~~~
+      |                                  g_Pin
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:44:39 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'display7SEG':
+../Core/Src/main.c:81:53: error: 'num' undeclared (first use in this function)
+   81 |  HAL_GPIO_WritePin(a_GPIO_Port, a_Pin, ((LED_buffer[num] >> 0) & 0x01));
+      |                                                     ^~~
+../Core/Src/main.c:81:53: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+10:44:46 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 2_EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 2_EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 2_EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 2_EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 2_EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 2_EX1-5.elf  > "Lab 2_EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8256	     96	   1656	  10008	   2718	Lab 2_EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 2_EX1-5.bin
+Finished building: Lab 2_EX1-5.hex
+ 
+ 
+Finished building: Lab 2_EX1-5.list
+ 
+10:45:21 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-size   Lab\ 2_EX1-5.elf 
+   text	   data	    bss	    dec	    hex	filename
+   8256	     96	   1656	  10008	   2718	Lab 2_EX1-5.elf
+Finished building: default.size.stdout
+ 
+10:47:44 **** Incremental Build of configuration Debug for project Lab 2_EX1-5 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Lab 2_EX1-5.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 2_EX1-5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 2_EX1-5.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 2_EX1-5.elf
+ 
+arm-none-eabi-size   Lab\ 2_EX1-5.elf 
+arm-none-eabi-objdump -h -S  Lab\ 2_EX1-5.elf  > "Lab 2_EX1-5.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 2_EX1-5.elf  "Lab 2_EX1-5.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8260	     96	   1656	  10012	   271c	Lab 2_EX1-5.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 2_EX1-5.hex
+Finished building: Lab 2_EX1-5.bin
+ 
+Finished building: Lab 2_EX1-5.list
+ 
+ 
