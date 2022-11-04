@@ -1,0 +1,56 @@
+/*
+ * input_processing.c
+ *
+ *  Created on: Nov 2, 2022
+ *      Author: Admin
+ */
+#include "main.h"
+#include "button.h"
+#include "LED_display.h"
+#include "software_timer.h"
+#include "display7SEG.h"
+
+#define TIMER1 0
+#define TIMER2 1
+#define TIMER3 2
+#define TIMER4 3
+
+#define HALF_A_SEC 500
+#define SCANNING_FREQ 250
+#define REV_TIMER_UP 10
+
+enum ButtonState {
+    NORMAL_MODE, BUTTON1_MODE, BUTTON2_MODE, BUTTON3_MODE
+};
+enum ButtonState buttonState = NORMAL_MODE;
+
+enum LED_STATE {
+    INIT1, RED_WEST_ON, GREEN_WEST_ON, YELLOW_WEST_ON
+};
+enum LED_STATE ledState = INIT1;
+
+enum LED_STATE2 {
+    INIT2, GREEN_NORTH_ON, YELLOW_NORTH_ON, RED_NORTH_ON
+};
+enum LED_STATE2 ledState2 = INIT2;
+
+int led_index = 0;
+
+void fsm_for_input_processing(void) {
+    switch (buttonState) {
+        case NORMAL_MODE:
+            break;
+        case BUTTON1_MODE:
+
+            break;
+        case BUTTON2_MODE:
+
+            // todo
+            break;
+        case BUTTON3_MODE:
+            break;
+        default:
+            break;
+    }
+}
+

@@ -1,0 +1,59 @@
+/*
+ * LED_display.c
+ *
+ *  Created on: Nov 2, 2022
+ *      Author: Admin
+ */
+
+#include "LED_display.h"
+#include "timer.h"
+#include "software_timer.h"
+#include "main.h"
+
+int counterRED = 500;
+int counterYELLOW = 200;
+int counterGREEN = 300;
+
+int statRED = ON;
+int statYELLOW = OFF;
+int statGREEN = OFF;
+
+int statRED2 = OFF;
+int statYELLOW2 = OFF;
+int statGREEN2 = ON;
+
+void enable_RED_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_WEST_Pin, statRED);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_Pin, statYELLOW);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_RESET);
+}
+
+void enable_YELLOW_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_WEST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_RESET);
+}
+
+void enable_GREEN_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_WEST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_SET);
+}
+
+void enable_RED_NORTH(void){
+	HAL_GPIO_WritePin(RED_NORTH_GPIO_Port, RED_NORTH_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(YELLOW_NORTH_GPIO_Port, YELLOW_NORTH_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GREEN_NORTH_GPIO_Port, GREEN_NORTH_Pin, GPIO_PIN_RESET);
+}
+
+void enable_YELLOW_NORTH(void){
+	HAL_GPIO_WritePin(RED_NORTH_GPIO_Port, RED_NORTH_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_NORTH_GPIO_Port, YELLOW_NORTH_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_NORTH_GPIO_Port, GREEN_NORTH_Pin, GPIO_PIN_RESET);
+}
+
+void enable_GREEN_NORTH(void){
+	HAL_GPIO_WritePin(RED_NORTH_GPIO_Port, RED_NORTH_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_NORTH_GPIO_Port, YELLOW_NORTH_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GREEN_NORTH_GPIO_Port, GREEN_NORTH_Pin, GPIO_PIN_SET);
+}

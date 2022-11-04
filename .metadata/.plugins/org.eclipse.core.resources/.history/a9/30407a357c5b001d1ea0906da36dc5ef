@@ -1,0 +1,48 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 3, 2022
+ *      Author: Admin
+ */
+
+#include "global.h"
+
+enum LED_stat west_traffic = INIT;
+enum LED_stat north_traffic = INIT;
+enum SEG7 countdown = INIT;
+enum MODE mode_change = INIT;
+
+int AUTO_RED = 0;
+int AUTO_YELLOW = 0;
+int AUTO_GREEN = 0;
+
+int counterRED_WEST = 0;
+int counterYELLOW_WEST = 0;
+int counterGREEN_WEST = 0;
+
+int counterRED_NORTH = 0;
+int counterYELLOW_NORTH = 0;
+int counterGREEN_NORTH = 0;
+
+void ledTimeInit(){
+	AUTO_RED = INIT_RED;
+	AUTO_GREEN = INIT_GREEN;
+	AUTO_YELLOW = INIT_YELLOW;
+}
+
+void initVar(void){
+	mode = MODE1;
+
+	statusAUTO1 = INIT;
+	statusAUTO2 = INIT;
+	statusAUTO3 = INIT;
+	statusAUTO4 = INIT;
+
+	counterRed_WEST = AUTO_RED;
+	counterGreen_WEST = AUTO_GREEN;
+	counterYellowWEST = AUTO_YELLOW;
+
+	counterRed_NORTH = AUTO_RED;
+	counterGreenNORTH = AUTO_GREEN;
+	counterYellowNORTH = AUTO_YELLOW;
+}

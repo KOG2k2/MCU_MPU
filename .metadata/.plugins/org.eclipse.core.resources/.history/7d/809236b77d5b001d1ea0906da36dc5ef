@@ -1,0 +1,28 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 3, 2022
+ *      Author: Admin
+ */
+
+#include "global.h"
+
+int mode = MODE1;
+
+//MODE 1
+int west_traffic = INIT;
+int north_traffic = INIT;
+int countdown = INIT;
+int mode_change = INIT;
+
+int AUTO_RED = INIT_RED;
+int AUTO_YELLOW = INIT_YELLOW;
+int AUTO_GREEN = INIT_GREEN;
+
+int counterRed_WEST = AUTO_RED;
+int counterGreen_WEST = AUTO_GREEN;
+int counterYellowWEST = AUTO_YELLOW;
+
+int counterRed_NORTH = AUTO_RED;
+int counterGreenNORTH = AUTO_GREEN;
+int counterYellowNORTH = AUTO_YELLOW;

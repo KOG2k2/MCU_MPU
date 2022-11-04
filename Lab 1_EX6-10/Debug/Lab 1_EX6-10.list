@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000155bc  00000000  00000000  00024680  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000045c7  00000000  00000000  00039c3c  2**0
+ 17 .debug_line   000045cb  00000000  00000000  00039c3c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0007990e  00000000  00000000  0003e203  2**0
+ 18 .debug_str    0007990e  00000000  00000000  0003e207  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000b7b11  2**0
+ 19 .comment      00000053  00000000  00000000  000b7b15  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000d98  00000000  00000000  000b7b64  2**2
+ 20 .debug_frame  00000d98  00000000  00000000  000b7b68  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -355,14 +355,12 @@ int main(void)
  8000308:	607b      	str	r3, [r7, #4]
         }
 
-        if(Hour_count == HOUR_COUNT){
+        if(Hour_count == HOUR_COUNT) Hour_count = INITIAL_STATE;
  800030a:	687b      	ldr	r3, [r7, #4]
  800030c:	2b0c      	cmp	r3, #12
  800030e:	d101      	bne.n	8000314 <main+0x48>
-            Hour_count = INITIAL_STATE;
  8000310:	2300      	movs	r3, #0
  8000312:	607b      	str	r3, [r7, #4]
-        }
 
         clear_All_Clock();
  8000314:	f7ff ff1a 	bl	800014c <clear_All_Clock>

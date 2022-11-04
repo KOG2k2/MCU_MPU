@@ -1,0 +1,139 @@
+/*
+ * input_processing.c
+ *
+ *  Created on: Nov 2, 2022
+ *      Author: Admin
+ */
+#include "main.h"
+#include "button.h"
+#include "LED_display.h"
+#include "software_timer.h"
+#include "display7SEG.h"
+
+#define TIMER1 0
+#define TIMER2 1
+#define TIMER3 2
+#define TIMER4 3
+
+#define HALF_A_SEC 500
+#define SCANNING_FREQ 250
+#define REV_TIMER_UP 10
+
+enum ButtonState {
+    NORMAL_MODE, BUTTON1_MODE, BUTTON2_MODE, BUTTON3_MODE
+};
+enum ButtonState buttonState = NORMAL_MODE;
+
+enum LED_STATE {
+    INIT1, RED_WEST_ON, GREEN_WEST_ON, YELLOW_WEST_ON
+};
+enum LED_STATE ledState = INIT1;
+
+enum LED_STATE2 {
+    INIT2, GREEN_NORTH_ON, YELLOW_NORTH_ON, RED_NORTH_ON
+};
+enum LED_STATE2 ledState2 = INIT2;
+
+int led_index = 0;
+
+void fsm_for_input_processing(void) {
+    switch (buttonState) {
+        case NORMAL_MODE:
+        	if(RED_WEST_stat == ON && RED_WEST_count == RESET_TIME){
+			  RED_WEST_count = RED_COUNTER;
+			  RED_WEST_stat = OFF;
+			  YELLOW_WEST_stat = OFF;
+			  GREEN_WEST_stat = ON;
+        	}
+
+        	if(GREEN_WEST_stat == ON && GREEN_WEST_count == RESET_TIME){
+			  GREEN_WEST_count = GREEN_COUNTER;
+			  RED_WEST_stat = OFF;
+			  YELLOW_WEST_stat = ON;
+			  GREEN_WEST_stat = OFF;
+        	}
+
+        	if(YELLOW_WEST_stat == ON && YELLOW_WEST_count == RESET_TIME){
+			  YELLOW_WEST_count = YELLOW_COUNTER;
+			  RED_WEST_stat = ON;
+			  YELLOW_WEST_stat = OFF;
+			  GREEN_WEST_stat = OFF;
+        	}
+
+		  if(RED_WEST_stat == ON){
+			  RED_WEST_ON();
+			  display7SEG(RED_WEST_count);
+			  RED_WEST_count--;
+		  }
+		  if(RED_WEST_stat == OFF) RED_WEST_OFF();
+
+		  if(YELLOW_WEST_stat == ON){
+			  YELLOW_WEST_ON();
+			  display7SEG(YELLOW_WEST_count);
+			  YELLOW_WEST_count--;
+		  }
+		  if(RED_WEST_stat == OFF) YELLOW_WEST_OFF();
+
+		  if(GREEN_WEST_stat == ON){
+			  GREEN_WEST_ON();
+			  display7SEG(GREEN_WEST_count);
+			  GREEN_WEST_count--;
+		  }
+		  if(GREEN_WEST_stat == OFF) GREEN_WEST_OFF();
+
+		  if(RED_NORTH_stat == ON && RED_NORTH_count == RESET_TIME){
+			  RED_NORTH_count = RED_COUNTER;
+			  RED_NORTH_stat = OFF;
+			  YELLOW_NORTH_stat = OFF;
+			  GREEN_NORTH_stat = ON;
+		  }
+
+		  if(GREEN_NORTH_stat == ON && GREEN_NORTH_count == RESET_TIME){
+			  GREEN_NORTH_count = GREEN_COUNTER;
+			  RED_NORTH_stat = OFF;
+			  YELLOW_NORTH_stat = ON;
+			  GREEN_NORTH_stat = OFF;
+		  }
+
+		  if(YELLOW_NORTH_stat == ON && YELLOW_NORTH_count == RESET_TIME){
+			  YELLOW_NORTH_count = YELLOW_COUNTER;
+			  RED_NORTH_stat = ON;
+			  YELLOW_NORTH_stat = OFF;
+			  GREEN_NORTH_stat = OFF;
+		  }
+
+		  if(RED_NORTH_stat == ON){
+			  RED_NORTH_ON();
+			  display7SEG2(RED_NORTH_count);
+			  RED_NORTH_count--;
+		  }
+		  if(RED_NORTH_stat == OFF) RED_NORTH_OFF();
+
+		  if(YELLOW_NORTH_stat == ON){
+			  YELLOW_NORTH_ON();
+			  display7SEG2(YELLOW_NORTH_count);
+			  YELLOW_NORTH_count--;
+		  }
+		  if(YELLOW_NORTH_stat == OFF) YELLOW_NORTH_OFF();
+
+		  if(GREEN_NORTH_stat == ON){
+			  GREEN_NORTH_ON();
+			  display7SEG2(GREEN_NORTH_count);
+			  GREEN_NORTH_count--;
+		  }
+		  if(GREEN_NORTH_stat == OFF) GREEN_NORTH_OFF();
+            break;
+        case BUTTON1_MODE:
+
+            break;
+        case BUTTON2_MODE:
+
+            // todo
+            break;
+        case BUTTON3_MODE:
+            break;
+        default:
+            break;
+    }
+}
+

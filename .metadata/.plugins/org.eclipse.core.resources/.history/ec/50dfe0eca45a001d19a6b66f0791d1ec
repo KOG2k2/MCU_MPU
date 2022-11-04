@@ -1,0 +1,20 @@
+/*
+ * input_processing.h
+ *
+ *  Created on: Oct 27, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_INPUT_PROCESSING_H_
+#define INC_INPUT_PROCESSING_H_
+
+#include "global.h"
+#include "timer.h"
+
+extern int red_time;
+extern int yellow_time;
+extern int green_time;
+
+void fsm_for_input_processing ( void ) ;
+
+#endif /* INC_INPUT_PROCESSING_H_ */

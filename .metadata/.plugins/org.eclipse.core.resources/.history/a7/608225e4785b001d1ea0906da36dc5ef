@@ -1,0 +1,47 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 3, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#define MODE1  1
+#define MODE2  2
+#define MODE3  3
+#define MODE4  4
+
+#define NUM_OF_BUTTON 3
+#define BUTTON1 0
+#define BUTTON2 1
+#define BUTTON3 2
+
+#define INIT_RED 5
+#define INIT_YELLOW 2
+#define INIT_GREEN 3
+
+#define MAX_COUNT 99
+#define MIN_COUNT 1
+
+extern int stat;
+
+extern int west_traffic;
+extern int north_traffic;
+extern int countdown_stat;
+extern int mode_change_stat;
+
+extern int AUTO_RED;
+extern int AUTO_YELLOW;
+extern int AUTO_GREEN;
+
+extern int counterRED_WEST;
+extern int counterYELLOW_WEST;
+extern int counterGREEN_WEST;
+
+extern int counterRED_NORTH;
+extern int counterYELLOW_NORTH;
+extern int counterGREEN_NORTH;
+
+#endif /* INC_GLOBAL_H_ */

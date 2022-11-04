@@ -1,0 +1,31 @@
+/*
+ * LED_display.c
+ *
+ *  Created on: Nov 2, 2022
+ *      Author: Admin
+ */
+
+#include "LED_display.h"
+
+void enable_RED_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_NORTH_1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_SET);
+}
+
+void enable_YELLOW_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_NORTH_1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_SET);
+}
+void enable_GREEN_WEST(void){
+	HAL_GPIO_WritePin(RED_WEST_GPIO_Port, RED_NORTH_1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(YELLOW_WEST_GPIO_Port, YELLOW_WEST_1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GREEN_WEST_GPIO_Port, GREEN_WEST_Pin, GPIO_PIN_SET);
+}
+void enable_RED_NORTH(void);
+void enable_YELLOW_NORTH(void);
+void enable_GREEN_NORTH(void);
+
+int enable_Term_GREEN(int value);
+int enable_Term_YELLOW(int value);

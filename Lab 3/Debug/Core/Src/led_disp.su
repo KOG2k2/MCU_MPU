@@ -1,0 +1,10 @@
+led_disp.c:10:6:enableRED_WEST	8	static
+led_disp.c:15:6:enableYELLOW_WEST	8	static
+led_disp.c:20:6:enableGREEN_WEST	8	static
+led_disp.c:26:6:enableRED_NORTH	8	static
+led_disp.c:31:6:enableGREEN_NORTH	8	static
+led_disp.c:36:6:enableYELLOW_NORTH	8	static
+led_disp.c:44:6:display7SEG1	16	static
+led_disp.c:54:6:display7SEG2	16	static
+led_disp.c:64:6:display_chuc	16	static
+led_disp.c:74:6:display_don_vi	16	static

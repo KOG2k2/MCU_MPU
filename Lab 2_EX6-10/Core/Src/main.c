@@ -37,7 +37,7 @@
 #define ENABLE_2_ON 3
 #define ENABLE_3_ON 0
 
-#define HALF_A_SEC 50
+#define HALF_A_SEC 500
 #define SCANNING_FREQ 250
 #define REV_TIMER_UP 10
 
@@ -68,7 +68,6 @@ int index_led = 0;
 int led_buffer [4] = {1 , 2 , 3 , 4};
 
 int hour = 15, minute = 8, second = 50;
-int Hang_Chuc, Hang_Don_Vi;
 
 int timer0_counter = 0;
 int timer0_flag = 0;
@@ -77,9 +76,6 @@ int timer1_counter = 0;
 int timer1_flag = 0;
 
 int LED_buffer[10] = {0x40, 0x79, 0x24, 0x30, 0x19, 0x12, 0x02, 0x78, 0x00, 0x10};
-
-int A_in_Matrix[8] = {0xC3, 0x81, 0x99,0x99, 0x81, 0x99, 0x99, 0x99};
-int Col_Scanning[8] = {0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,9 +93,6 @@ void display7SEG(uint8_t num){
 	HAL_GPIO_WritePin(g_GPIO_Port, g_Pin, ((LED_buffer[num] >> 6) & 0x01));
 }
 
-void display_LED_MATRIX(){
-
-}
 void update7SEG(int index){
 	switch (index){
 		case 0:
@@ -143,13 +136,11 @@ void update7SEG(int index){
 }
 
 int Get_Chuc(int number){
-	Hang_Chuc = ((number%100/10));
-	return Hang_Chuc;
+	return ((number%100/10));
 }
 
 int Get_Don_vi(int number){
-	Hang_Don_Vi = (number%10);
-	return Hang_Don_Vi;
+	return (number%10);
 }
 
 void updateClockBuffer(){

@@ -1,0 +1,5 @@
+display7SEG.c:13:5:Get_Chuc	16	static
+display7SEG.c:17:5:Get_Don_vi	16	static
+display7SEG.c:21:6:update7SEG	16	static
+display7SEG.c:34:6:display7SEG	16	static
+display7SEG.c:44:6:EnableWhich	16	static
