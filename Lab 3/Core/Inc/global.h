@@ -28,6 +28,12 @@
 #define MODE1 1
 #define MODE2 2
 #define MODE3 3
+#define MODE4 4
+
+#define BLINK 1
+
+#define INCREASE 1
+#define SAVE 2
 
 #define SEG1 1
 #define SEG2 2
@@ -43,9 +49,17 @@ extern int Stat_M2_1;
 extern int Stat_M2_2;
 extern int Stat_M2_3;
 
-extern int Stat_B3;
+extern int Stat_M3_1;
+extern int Stat_M3_2;
+extern int Stat_M3_3;
 
+extern int Stat_M4_1;
+extern int Stat_M4_2;
+extern int Stat_M4_3;
 
+extern int temp_RED;
+extern int temp_YELLOW;
+extern int temp_GREEN;
 extern int AUTO_RED;
 extern int AUTO_YELLOW;
 extern int AUTO_GREEN;

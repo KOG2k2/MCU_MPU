@@ -1,18 +1,23 @@
-16:17:43 **** Incremental Build of configuration Debug for project Lab 3 ****
+21:24:33 **** Incremental Build of configuration Debug for project Lab 3 ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/button.o"
-arm-none-eabi-gcc "../Core/Src/fsm_auto.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_auto.d" -MT"Core/Src/fsm_auto.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_auto.o"
-arm-none-eabi-gcc "../Core/Src/fsm_manual.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_manual.d" -MT"Core/Src/fsm_manual.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_manual.o"
-arm-none-eabi-gcc "../Core/Src/global.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/global.d" -MT"Core/Src/global.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/global.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/fsm_manual.c: In function 'fsm_manual_run':
-../Core/Src/fsm_manual.c:12:10: error: 'test' undeclared (first use in this function)
-   12 |   switch(test){
-      |          ^~~~
-../Core/Src/fsm_manual.c:12:10: note: each undeclared identifier is reported only once for each function it appears in
-make: *** [Core/Src/subdir.mk:52: Core/Src/fsm_manual.o] Error 1
-make: *** Waiting for unfinished jobs....
-"make -j12 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc -o "Lab 3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\Lab 3\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Lab 3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Lab 3.elf
+ 
+arm-none-eabi-size   Lab\ 3.elf 
+arm-none-eabi-objdump -h -S  Lab\ 3.elf  > "Lab 3.list"
+arm-none-eabi-objcopy  -O ihex  Lab\ 3.elf  "Lab 3.hex"
+arm-none-eabi-objcopy  -O binary  Lab\ 3.elf  "Lab 3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11356	     84	   1836	  13276	   33dc	Lab 3.elf
+Finished building: default.size.stdout
+ 
+Finished building: Lab 3.hex
+Finished building: Lab 3.bin
+ 
+ 
+Finished building: Lab 3.list
+ 
 
-16:17:44 Build Failed. 3 errors, 0 warnings. (took 765ms)
+21:24:34 Build Finished. 0 errors, 0 warnings. (took 937ms)
 

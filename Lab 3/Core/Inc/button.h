@@ -14,10 +14,9 @@
 #define NORMAL_STATE SET
 #define PRESSED_STATE RESET
 
-int isButtonPressed();
+int isButtonPressed(int index);
 
-void subKeyProcess();
+void subKeyProcess(int index);;
 void getKeyInput();
-
 
 #endif /* INC_BUTTON_H_ */

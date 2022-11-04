@@ -101,6 +101,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  //if (isButtonPressed(BUTTON1)==1) RIDE_ON();
+	  //if (isButtonPressed(BUTTON2)==1) toggleGREENs();
+	  //if (isButtonPressed(BUTTON3)==1) toggleYELLOWs();
 	  fsm_auto_run();
 	  fsm_manual_run();
     /* USER CODE END WHILE */

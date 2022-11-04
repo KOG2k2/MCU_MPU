@@ -10,6 +10,10 @@
 
 #include "main.h"
 
+void RIDE_ON();
+void toggleGREENs();
+void toggleYELLOWs();
+
 void enableRED_WEST();
 void enableYELLOW_WEST();
 void enableGREEN_WEST();
