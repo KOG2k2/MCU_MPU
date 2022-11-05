@@ -1,8 +1,0 @@
-/*
- * global.c
- *
- *  Created on: Nov 4, 2022
- *      Author: Admin
- */
-
-int mode = 0;

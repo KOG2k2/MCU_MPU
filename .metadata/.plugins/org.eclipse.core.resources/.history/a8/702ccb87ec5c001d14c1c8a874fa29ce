@@ -15,6 +15,12 @@ int SEG7timer_flag = FLAG_OFF;
 int LONGtimer_counter = COUNT_RESET;
 int LONGtimer_flag = FLAG_OFF;
 
+int LONG_PRESSED_INTERVALtimer1_counter = COUNT_RESET;
+int LONG_PRESSED_INTERVALtimer1_flag = FLAG_OFF;
+
+int LONG_PRESSED_INTERVALtimer2_counter = COUNT_RESET;
+int LONG_PRESSED_INTERVALtimer2_flag = FLAG_OFF;
+
 void setLEDTimer(int duration){
 	LEDtimer_counter = duration;
 	LEDtimer_flag = FLAG_OFF;

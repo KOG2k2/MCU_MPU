@@ -1,4 +1,4 @@
-software_timer.c:24:6:setLEDTimer	16	static
-software_timer.c:29:6:setSEG7Timer	16	static
-software_timer.c:34:6:setLONGTimer	16	static
-software_timer.c:39:6:timerRun	4	static
+software_timer.c:18:6:setLEDTimer	16	static
+software_timer.c:23:6:setSEG7Timer	16	static
+software_timer.c:28:6:setLONGTimer	16	static
+software_timer.c:33:6:timerRun	4	static
