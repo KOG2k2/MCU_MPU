@@ -1,4 +1,4 @@
-21:15:15 **** Incremental Build of configuration Debug for project TrafficLight_withModes ****
+15:45:29 **** Incremental Build of configuration Debug for project TrafficLight_withModes ****
 make -j12 all 
 arm-none-eabi-size   TrafficLight_withModes.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size   TrafficLight_withModes.elf
 Finished building: default.size.stdout
  
 
-21:15:15 Build Finished. 0 errors, 0 warnings. (took 316ms)
+15:45:29 Build Finished. 0 errors, 0 warnings. (took 395ms)
 

@@ -35,11 +35,6 @@ int AUTO_RED = 0;
 int AUTO_YELLOW = 0;
 int AUTO_GREEN = 0;
 
-//for update time
-int temp_RED = 0;
-int temp_YELLOW = 0;
-int temp_GREEN = 0;
-
 int counterRED_WEST = 0;
 int counterGREEN_WEST = 0;
 int counterYELLOW_WEST = 0;
@@ -81,9 +76,5 @@ void Setup(){
 	counterRED_NORTH = AUTO_RED;
 	counterGREEN_NORTH = AUTO_GREEN;
 	counterYELLOW_NORTH = AUTO_YELLOW;
-
-	temp_RED = AUTO_RED;
-	temp_YELLOW = AUTO_YELLOW;
-	temp_GREEN = AUTO_GREEN;
 }
 /*-------------------------------------*/

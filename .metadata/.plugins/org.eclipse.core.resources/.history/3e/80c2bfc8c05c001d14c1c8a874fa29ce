@@ -1,0 +1,25 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "fsm_manual.h"
+
+void fsm_manual_run(){
+	if(mode == RES_STATE){
+		if(isButtonPressed(RES) == 1) counterRED = 0;
+	}
+
+	if(mode == INC_STATE){
+		if(isButtonPressed(INC) == 1){
+			counterRED++;
+			if(counterRED > 9) counterRED = 0;
+		}
+	}
+
+	if(mode == DEC_STATE){
+
+	}
+}

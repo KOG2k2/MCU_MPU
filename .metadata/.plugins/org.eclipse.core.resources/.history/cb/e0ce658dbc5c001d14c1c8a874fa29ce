@@ -1,0 +1,45 @@
+/*
+ * global.h
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_GLOBAL_H_
+#define INC_GLOBAL_H_
+
+#include "software_timer.h"
+#include "led_disp.h"
+
+#define INIT 0
+
+#define NUM_OF_BUTTON 3
+#define BUTTON1 0
+#define BUTTON2 1
+#define BUTTON3 2
+
+#define MODE1 1
+#define MODE2 2
+#define MODE3 3
+#define MODE4 4
+
+#define BLINK 1
+
+#define SEG_ON 1
+
+#define AUTO_RED 9
+
+//extern int AUTO_RED;
+extern int
+extern int counterRED;
+
+extern int mode;
+
+extern int LED_BLINK;
+
+extern int seg_disp;
+
+void Red_time();
+void Setup();
+
+#endif /* INC_GLOBAL_H_ */

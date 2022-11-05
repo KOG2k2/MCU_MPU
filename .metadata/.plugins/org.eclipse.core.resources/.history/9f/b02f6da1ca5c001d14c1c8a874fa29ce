@@ -1,0 +1,21 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "global.h"
+
+int counter = 0;
+
+int temp_count = 0;
+
+void setRED(){
+	temp_count = RED_TIME;
+}
+
+void Setup(){
+
+	counter = temp_count;
+}

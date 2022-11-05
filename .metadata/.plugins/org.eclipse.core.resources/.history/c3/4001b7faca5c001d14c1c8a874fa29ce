@@ -1,0 +1,26 @@
+/*
+ * button.h
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_BUTTON_H_
+#define INC_BUTTON_H_
+
+#include "main.h"
+#include "global.h"
+
+#define NORMAL_STATE GPIO_PIN_SET
+#define PRESSED_STATE GPIO_PIN_RESET
+
+
+// not allow main to access flag
+// extern int button1_flag;
+
+int isButtonPressed();
+
+void getKeyInput();
+
+
+#endif /* INC_BUTTON_H_ */

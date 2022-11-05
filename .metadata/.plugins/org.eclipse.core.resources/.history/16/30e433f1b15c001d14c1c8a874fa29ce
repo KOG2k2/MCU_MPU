@@ -1,0 +1,41 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+int mode = 0;
+
+void Setup(){
+	mode = MODE1;
+
+	west_traffic = INIT;
+	north_traffic = INIT;
+	seg_disp = INIT;
+	mode_change = INIT;
+
+	Stat_M2_1 = INIT;
+	Stat_M2_2 = INIT;
+	Stat_M2_3 = INIT;
+
+	Stat_M3_1 = INIT;
+	Stat_M3_2 = INIT;
+	Stat_M3_3 = INIT;
+
+	Stat_M4_1 = INIT;
+	Stat_M4_2 = INIT;
+	Stat_M4_3 = INIT;
+
+	counterRED_WEST = AUTO_RED;
+	counterGREEN_WEST = AUTO_GREEN;
+	counterYELLOW_WEST = AUTO_YELLOW;
+
+	counterRED_NORTH = AUTO_RED;
+	counterGREEN_NORTH = AUTO_GREEN;
+	counterYELLOW_NORTH = AUTO_YELLOW;
+
+	temp_RED = AUTO_RED;
+	temp_YELLOW = AUTO_YELLOW;
+	temp_GREEN = AUTO_GREEN;
+}

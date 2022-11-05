@@ -1,0 +1,15 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+int mode = 0;
+
+int AUTO = 0;
+void Setup(){
+	mode = MODE1;
+
+
+}

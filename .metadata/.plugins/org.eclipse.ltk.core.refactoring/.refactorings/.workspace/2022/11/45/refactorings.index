@@ -13,3 +13,7 @@
 1667477714444	Delete resource 'Lab 3/Core/Inc/software_timer.h'
 1667477717634	Delete resource 'Lab 3/Core/Inc/timer.h'
 1667477727725	Delete 6 resources
+1667626437284	Delete resource 'midterm/Core/Inc/global.h'
+1667626443876	Delete resource 'midterm/Core/Src/global.c'
+1667626546489	Delete resource 'midterm/Core/Src/fsm_manual.c'
+1667626549458	Delete resource 'midterm/Core/Inc/fsm_manual.h'

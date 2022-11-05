@@ -9,16 +9,20 @@
 #define INC_BUTTON_H_
 
 #include "main.h"
-#include "global.h"
 
-#define NORMAL_STATE GPIO_PIN_SET
-#define PRESSED_STATE GPIO_PIN_RESET
+#define NORMAL_STATE SET
+#define PRESSED_STATE RESET
 
+#define NUM_OF_BUTTON 3
+#define RES_BUTTON 0
+#define INC_BUTTON 1
+#define DEC_BUTTON 2
 
-// not allow main to access flag
-// extern int button1_flag;
+void longSubKeyProcess(int index);
 
-int isButtonPressed();
+int isButtonPressed(int index);
+
+int isLongButtonPressed(int index);
 
 void getKeyInput();
 

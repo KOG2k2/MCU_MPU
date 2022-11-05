@@ -1,2 +1,2 @@
-global.c:51:6:LedTimeInit	4	static
-global.c:57:6:Setup	4	static
+global.c:46:6:LedTimeInit	4	static
+global.c:52:6:Setup	4	static

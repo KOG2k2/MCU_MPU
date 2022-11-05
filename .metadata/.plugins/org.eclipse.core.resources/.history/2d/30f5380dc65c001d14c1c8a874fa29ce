@@ -1,0 +1,53 @@
+/*
+ * fsm_auto.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "fsm_auto.h"
+
+void fsm_simple_buttons_run (){
+	if(mode == NORM_STATE){
+		switch(LED_BLINK){
+		case INIT:
+			LED_BLINK = BLINK;
+			setTimer1(100);
+			break;
+		case BLINK:
+			if(timer1_flag == 1){
+				TOGGLE();
+				display7SEG1(counterRED);
+				if(counterRED > 0) counterRED--;
+				setTimer1(100);
+			}
+			break;
+		default:
+			break;
+		}
+
+		if (isButtonPressed(RES) == 1) mode = RES_STATE;
+		if (isButtonPressed(INC) == 1) mode = INC_STATE;
+		if (isButtonPressed(DEC) == 1) mode = DEC_STATE;
+	}
+	if(mode == RES_STATE){
+		if(isButtonPressed(RES) == 1) counterRED = 0;
+	}
+
+	if(mode == INC_STATE){
+		if(isButtonPressed(INC) == 1){
+			AUTO_RED++;
+			if(AUTO_RED > 9) AUTO_RED = 0;
+		}
+		Setup();
+	}
+
+	if(mode == DEC_STATE){
+		if(isButtonPressed(DEC) == 1){
+			AUTO_RED--;
+			if(AUTO_RED < 0) AUTO_RED = 9;
+		}
+		Setup();
+	}
+
+}

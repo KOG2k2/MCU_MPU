@@ -1,0 +1,27 @@
+/*
+ * global.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "global.h"
+
+int mode = 0;
+
+int LED_BLINK = 0;
+
+int counterRED = 0;
+
+int seg_disp = 0;
+int AUTO_RED = 0;
+
+void setRED(){
+	AUTO_RED = RED_TIME;
+}
+
+void Setup(){
+	mode = INIT;
+
+	counterRED = AUTO_RED;
+}

@@ -1,0 +1,2 @@
+led_disp.c:10:6:TOGGLE	8	static
+led_disp.c:16:6:display7SEG1	16	static

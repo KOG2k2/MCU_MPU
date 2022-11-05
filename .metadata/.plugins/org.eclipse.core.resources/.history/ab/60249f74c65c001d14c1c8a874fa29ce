@@ -1,0 +1,29 @@
+/*
+ * fsm_auto.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "fsm_auto.h"
+
+void fsm_simple_buttons_run (){
+	if(timer1_flag == 1){
+		TOGGLE();
+		display7SEG1(counterRED);
+		if(counterRED > 0) counterRED--;
+		setTimer1(100);
+	}
+	switch(mode){
+	case INIT:
+		break;
+	case NORM_MODE:
+		break;
+	case RES_STATE:
+		break;
+	case INC_STATE:
+		break;
+	case DEX_STATE:
+		break;
+	}
+}
