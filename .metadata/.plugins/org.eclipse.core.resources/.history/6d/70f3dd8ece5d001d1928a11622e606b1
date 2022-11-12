@@ -1,0 +1,214 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "fsm_manual.h"
+
+void fsm_manual_run(){
+	if(mode == MODE2){
+		switch(Stat_M2_1){
+		case INIT:  //led blink 2Hz
+			Stat_M2_1 = BLINK;
+			setTimer4(10);
+			break;
+		case BLINK:
+			if(timer4_flag == 1){
+				RIDE_ON();
+				setTimer4(50);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M2_2){
+		case INIT:
+			Stat_M2_2 = SEG1;
+			setTimer5(10);
+			break;
+		case SEG1:
+			if(timer5_flag == 1){
+				display_chuc(mode, AUTO_RED);
+				Stat_M2_2 = SEG2;
+				setTimer5(25);
+			}
+			break;
+		case SEG2:
+			if(timer5_flag == 1){
+				display_don_vi(mode, AUTO_RED);
+				Stat_M2_2 = SEG1;
+				setTimer5(25);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M2_3){
+			case INIT:
+				if(isButtonPressed(BUTTON2) == 1){
+					Stat_M2_3 = INCREASE;
+					//temp_RED++;
+					AUTO_RED++;
+				}
+				break;
+			case INCREASE:
+				if(isButtonPressed(BUTTON2) == 1){
+					//temp_RED++;
+					AUTO_RED++;
+					if(AUTO_RED > MAX_COUNT) AUTO_RED = MAX_COUNT;
+				}
+
+				if(isButtonPressed(BUTTON3) == 1) Stat_M2_3 = SAVE;
+				break;
+			case SAVE:
+				//AUTO_RED = temp_RED;
+				mode = MODE1;
+				Setup();
+				break;
+			default:
+				break;
+		}
+
+		if(isButtonPressed(BUTTON1) == 1) mode = MODE3;
+	}
+
+	if(mode == MODE3){
+		switch(Stat_M3_1){
+		case INIT:  //led blink 2Hz
+			Stat_M3_1 = BLINK;
+			setTimer6(10);
+			break;
+		case BLINK:
+			if(timer6_flag == 1){
+				RIDE_ON();
+				setTimer6(50);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M3_2){
+		case INIT:
+			Stat_M3_2 = SEG1;
+			setTimer7(10);
+			break;
+		case SEG1:
+			if(timer7_flag == 1){
+				display_chuc(mode, AUTO_GREEN);
+				Stat_M3_2 = SEG2;
+				setTimer7(25);
+			}
+			break;
+		case SEG2:
+			if(timer7_flag == 1){
+				display_don_vi(mode, AUTO_GREEN);
+				Stat_M2_2 = SEG1;
+				setTimer7(25);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M3_3){
+			case INIT:
+				if(isButtonPressed(BUTTON2) == 1){
+					Stat_M3_3 = INCREASE;
+					//temp_GREEN++;
+					AUTO_GREEN++;
+				}
+				break;
+			case INCREASE:
+				if(isButtonPressed(BUTTON2) == 1){
+					AUTO_GREEN++;
+					if(AUTO_GREEN >= MAX_COUNT) AUTO_GREEN = MAX_COUNT;
+				}
+
+				if(isButtonPressed(BUTTON3) == 1) Stat_M3_3 = SAVE;
+				break;
+			case SAVE:
+				//AUTO_GREEN = temp_GREEN;
+				mode = MODE1;
+				Setup();
+				break;
+			default:
+				break;
+		}
+
+		if(isButtonPressed(BUTTON1) == 1) mode = MODE4;
+	}
+
+	if(mode == MODE4){
+		switch(Stat_M4_1){
+		case INIT:  //led blink 2Hz
+			Stat_M4_1 = BLINK;
+			setTimer8(10);
+			break;
+		case BLINK:
+			if(timer8_flag == 1){
+				RIDE_ON();
+				setTimer8(50);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M4_2){
+		case INIT:
+			Stat_M4_2 = SEG1;
+			setTimer9(10);
+			break;
+		case SEG1:
+			if(timer7_flag == 1){
+				display_chuc(mode, AUTO_YELLOW);
+				Stat_M4_2 = SEG2;
+				setTimer9(25);
+			}
+			break;
+		case SEG2:
+			if(timer9_flag == 1){
+				display_don_vi(mode, AUTO_YELLOW);
+				Stat_M4_2 = SEG1;
+				setTimer9(25);
+			}
+			break;
+		default:
+			break;
+		}
+
+		switch(Stat_M4_3){
+			case INIT:
+				if(isButtonPressed(BUTTON2) == 1){
+					Stat_M4_3 = INCREASE;
+					AUTO_YELLOW++;
+				}
+				break;
+			case INCREASE:
+				if(isButtonPressed(BUTTON2) == 1){
+					AUTO_YELLOW++;
+					if(AUTO_YELLOW >= MAX_COUNT) AUTO_YELLOW = MAX_COUNT;
+				}
+
+				if(isButtonPressed(BUTTON3) == 1) Stat_M4_3 = SAVE;
+				break;
+			case SAVE:
+				//AUTO_RED = temp_YELLOW;
+				mode = MODE1;
+				Setup();
+				break;
+			default:
+				break;
+		}
+
+		if(isButtonPressed(BUTTON1) == 1){
+			mode = MODE1;
+			Setup();
+		}
+	}
+}

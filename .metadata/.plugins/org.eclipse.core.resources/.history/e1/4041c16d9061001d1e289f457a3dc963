@@ -1,0 +1,24 @@
+/*
+ * led_disp.c
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#include "led_disp.h"
+
+int leds[NUM_OF_LED] = {RED12_Pin, RED1_Pin, RED2_Pin, RED3_Pin, RED4_Pin, RED5_Pin, RED6_Pin, RED7_Pin, RED8_Pin, RED9_Pin, RED10_Pin, RED11_Pin};
+
+int led_bufer[NUM_OF_LED] = {};
+
+void clear_All_Clock(int index){
+	HAL_GPIO_WritePin(GPIOA, leds[index], SET);
+}
+
+void set_Number_on_Clock(int num){
+
+}
+
+void clear_Number_on_Clock(int num){
+
+}

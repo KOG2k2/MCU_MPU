@@ -7,8 +7,6 @@
 
 #include "button.h"
 
-#define BUTTON_HOLD_TIME 300
-
 int BUTTONS[NUM_OF_BUTTON] = {RES_Pin, INC_Pin, DEC_Pin};
 
 int KeyReg0[NUM_OF_BUTTON] = {NORMAL_STATE, NORMAL_STATE, NORMAL_STATE};

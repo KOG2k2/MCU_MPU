@@ -1,0 +1,14 @@
+/*
+ * fsm_manual.c
+ *
+ *  Created on: Nov 4, 2022
+ *      Author: Admin
+ */
+
+#include "fsm_manual.h"
+
+void fsm_manual_run(){
+	if(mode == MODE2){
+		RIDE_ON();
+	}
+}

@@ -1,0 +1,18 @@
+/*
+ * led_disp.h
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_LED_DISP_H_
+#define INC_LED_DISP_H_
+
+#define NUM_OF_LEDS 12
+
+void set_All_Clock();
+void clear_All_Clock();
+void set_Number_on_Clock(int num);
+void clear_Number_on_Clock(int num);
+
+#endif /* INC_LED_DISP_H_ */

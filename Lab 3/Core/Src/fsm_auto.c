@@ -125,18 +125,18 @@ void fsm_auto_run(){
 			break;
 		}
 
-		switch(mode_change){
+		switch(mode){
 		case MODE1:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE2;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE2;
 			break;
 		case MODE2:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE3;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE3;
 			break;
 		case MODE3:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE4;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE4;
 			break;
 		case MODE4:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE1;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE1;
 			Setup();
 			break;
 		default:

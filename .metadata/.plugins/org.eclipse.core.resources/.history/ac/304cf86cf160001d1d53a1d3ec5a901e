@@ -1,0 +1,14 @@
+/*
+ * led_disp.h
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_LED_DISP_H_
+#define INC_LED_DISP_H_
+
+void clear_All_Clock();
+void set_Number_on_Clock(int num)
+
+#endif /* INC_LED_DISP_H_ */

@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00016d0f  00000000  00000000  0002cc90  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000bbc4  00000000  00000000  0004399f  2**0
+ 17 .debug_line   0000bbc2  00000000  00000000  0004399f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082502  00000000  00000000  0004f563  2**0
+ 18 .debug_str    00082502  00000000  00000000  0004f561  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d1a65  2**0
+ 19 .comment      00000053  00000000  00000000  000d1a63  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00002a2c  00000000  00000000  000d1ab8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -686,7 +686,7 @@ void fsm_auto_run(){
  8000548:	bf00      	nop
 		}
 
-		switch(mode_change){
+		switch(mode){
  800054a:	4b23      	ldr	r3, [pc, #140]	; (80005d8 <fsm_auto_run+0x338>)
  800054c:	681b      	ldr	r3, [r3, #0]
  800054e:	3b01      	subs	r3, #1
@@ -700,7 +700,7 @@ void fsm_auto_run(){
  8000564:	08000595 	.word	0x08000595
  8000568:	080005a9 	.word	0x080005a9
 		case MODE1:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE2;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE2;
  800056c:	2000      	movs	r0, #0
  800056e:	f7ff fded 	bl	800014c <isButtonPressed>
  8000572:	4603      	mov	r3, r0
@@ -712,7 +712,7 @@ void fsm_auto_run(){
 			break;
  800057e:	e023      	b.n	80005c8 <fsm_auto_run+0x328>
 		case MODE2:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE3;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE3;
  8000580:	2000      	movs	r0, #0
  8000582:	f7ff fde3 	bl	800014c <isButtonPressed>
  8000586:	4603      	mov	r3, r0
@@ -724,7 +724,7 @@ void fsm_auto_run(){
 			break;
  8000592:	e01b      	b.n	80005cc <fsm_auto_run+0x32c>
 		case MODE3:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE4;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE4;
  8000594:	2000      	movs	r0, #0
  8000596:	f7ff fdd9 	bl	800014c <isButtonPressed>
  800059a:	4603      	mov	r3, r0
@@ -736,7 +736,7 @@ void fsm_auto_run(){
 			break;
  80005a6:	e013      	b.n	80005d0 <fsm_auto_run+0x330>
 		case MODE4:
-			if (isButtonPressed(BUTTON1) == 1) mode_change = MODE1;
+			if (isButtonPressed(BUTTON1) == 1) mode = MODE1;
  80005a8:	2000      	movs	r0, #0
  80005aa:	f7ff fdcf 	bl	800014c <isButtonPressed>
  80005ae:	4603      	mov	r3, r0
@@ -770,7 +770,7 @@ void fsm_auto_run(){
  80005d2:	bf00      	nop
  80005d4:	bd80      	pop	{r7, pc}
  80005d6:	bf00      	nop
- 80005d8:	2000008c 	.word	0x2000008c
+ 80005d8:	2000007c 	.word	0x2000007c
 
 080005dc <fsm_manual_run>:
  *      Author: Admin
@@ -786,44 +786,44 @@ void fsm_manual_run(){
  80005e2:	681b      	ldr	r3, [r3, #0]
  80005e4:	2b02      	cmp	r3, #2
  80005e6:	f040 809f 	bne.w	8000728 <fsm_manual_run+0x14c>
-		switch(Stat_M2_1){
+			switch(Stat_M2_1){
  80005ea:	4b9d      	ldr	r3, [pc, #628]	; (8000860 <fsm_manual_run+0x284>)
  80005ec:	681b      	ldr	r3, [r3, #0]
  80005ee:	2b00      	cmp	r3, #0
  80005f0:	d002      	beq.n	80005f8 <fsm_manual_run+0x1c>
  80005f2:	2b01      	cmp	r3, #1
  80005f4:	d007      	beq.n	8000606 <fsm_manual_run+0x2a>
-				RIDE_ON();
-				setTimer4(50);
-			}
-			break;
-		default:
-			break;
+					RIDE_ON();
+					setTimer4(50);
+				}
+				break;
+			default:
+				break;
  80005f6:	e010      	b.n	800061a <fsm_manual_run+0x3e>
-			Stat_M2_1 = BLINK;
+				Stat_M2_1 = BLINK;
  80005f8:	4b99      	ldr	r3, [pc, #612]	; (8000860 <fsm_manual_run+0x284>)
  80005fa:	2201      	movs	r2, #1
  80005fc:	601a      	str	r2, [r3, #0]
-			setTimer4(10);
+				setTimer4(10);
  80005fe:	200a      	movs	r0, #10
  8000600:	f000 fde8 	bl	80011d4 <setTimer4>
-			break;
+				break;
  8000604:	e009      	b.n	800061a <fsm_manual_run+0x3e>
-			if(timer4_flag == 1){
+				if(timer4_flag == 1){
  8000606:	4b97      	ldr	r3, [pc, #604]	; (8000864 <fsm_manual_run+0x288>)
  8000608:	681b      	ldr	r3, [r3, #0]
  800060a:	2b01      	cmp	r3, #1
  800060c:	d104      	bne.n	8000618 <fsm_manual_run+0x3c>
-				RIDE_ON();
+					RIDE_ON();
  800060e:	f000 fa8d 	bl	8000b2c <RIDE_ON>
-				setTimer4(50);
+					setTimer4(50);
  8000612:	2032      	movs	r0, #50	; 0x32
  8000614:	f000 fdde 	bl	80011d4 <setTimer4>
-			break;
+				break;
  8000618:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M2_2){
+			switch(Stat_M2_2){
  800061a:	4b93      	ldr	r3, [pc, #588]	; (8000868 <fsm_manual_run+0x28c>)
  800061c:	681b      	ldr	r3, [r3, #0]
  800061e:	2b02      	cmp	r3, #2
@@ -834,28 +834,28 @@ void fsm_manual_run(){
  8000628:	d002      	beq.n	8000630 <fsm_manual_run+0x54>
  800062a:	2b01      	cmp	r3, #1
  800062c:	d007      	beq.n	800063e <fsm_manual_run+0x62>
-				Stat_M2_2 = SEG1;
-				setTimer5(25);
-			}
-			break;
-		default:
-			break;
+					Stat_M2_2 = SEG1;
+					setTimer5(25);
+				}
+				break;
+			default:
+				break;
  800062e:	e02c      	b.n	800068a <fsm_manual_run+0xae>
-			Stat_M2_2 = SEG1;
+				Stat_M2_2 = SEG1;
  8000630:	4b8d      	ldr	r3, [pc, #564]	; (8000868 <fsm_manual_run+0x28c>)
  8000632:	2201      	movs	r2, #1
  8000634:	601a      	str	r2, [r3, #0]
-			setTimer5(10);
+				setTimer5(10);
  8000636:	200a      	movs	r0, #10
  8000638:	f000 fde0 	bl	80011fc <setTimer5>
-			break;
+				break;
  800063c:	e02a      	b.n	8000694 <fsm_manual_run+0xb8>
-			if(timer5_flag == 1){
+				if(timer5_flag == 1){
  800063e:	4b8b      	ldr	r3, [pc, #556]	; (800086c <fsm_manual_run+0x290>)
  8000640:	681b      	ldr	r3, [r3, #0]
  8000642:	2b01      	cmp	r3, #1
  8000644:	d123      	bne.n	800068e <fsm_manual_run+0xb2>
-				display_chuc(mode, AUTO_RED);
+					display_chuc(mode, AUTO_RED);
  8000646:	4b85      	ldr	r3, [pc, #532]	; (800085c <fsm_manual_run+0x280>)
  8000648:	681b      	ldr	r3, [r3, #0]
  800064a:	4a89      	ldr	r2, [pc, #548]	; (8000870 <fsm_manual_run+0x294>)
@@ -863,21 +863,21 @@ void fsm_manual_run(){
  800064e:	4611      	mov	r1, r2
  8000650:	4618      	mov	r0, r3
  8000652:	f000 fbef 	bl	8000e34 <display_chuc>
-				Stat_M2_2 = SEG2;
+					Stat_M2_2 = SEG2;
  8000656:	4b84      	ldr	r3, [pc, #528]	; (8000868 <fsm_manual_run+0x28c>)
  8000658:	2202      	movs	r2, #2
  800065a:	601a      	str	r2, [r3, #0]
-				setTimer5(25);
+					setTimer5(25);
  800065c:	2019      	movs	r0, #25
  800065e:	f000 fdcd 	bl	80011fc <setTimer5>
-			break;
+				break;
  8000662:	e014      	b.n	800068e <fsm_manual_run+0xb2>
-			if(timer5_flag == 1){
+				if(timer5_flag == 1){
  8000664:	4b81      	ldr	r3, [pc, #516]	; (800086c <fsm_manual_run+0x290>)
  8000666:	681b      	ldr	r3, [r3, #0]
  8000668:	2b01      	cmp	r3, #1
  800066a:	d112      	bne.n	8000692 <fsm_manual_run+0xb6>
-				display_don_vi(mode, AUTO_RED);
+					display_don_vi(mode, AUTO_RED);
  800066c:	4b7b      	ldr	r3, [pc, #492]	; (800085c <fsm_manual_run+0x280>)
  800066e:	681b      	ldr	r3, [r3, #0]
  8000670:	4a7f      	ldr	r2, [pc, #508]	; (8000870 <fsm_manual_run+0x294>)
@@ -885,26 +885,26 @@ void fsm_manual_run(){
  8000674:	4611      	mov	r1, r2
  8000676:	4618      	mov	r0, r3
  8000678:	f000 fc16 	bl	8000ea8 <display_don_vi>
-				Stat_M2_2 = SEG1;
+					Stat_M2_2 = SEG1;
  800067c:	4b7a      	ldr	r3, [pc, #488]	; (8000868 <fsm_manual_run+0x28c>)
  800067e:	2201      	movs	r2, #1
  8000680:	601a      	str	r2, [r3, #0]
-				setTimer5(25);
+					setTimer5(25);
  8000682:	2019      	movs	r0, #25
  8000684:	f000 fdba 	bl	80011fc <setTimer5>
-			break;
+				break;
  8000688:	e003      	b.n	8000692 <fsm_manual_run+0xb6>
-			break;
+				break;
  800068a:	bf00      	nop
  800068c:	e002      	b.n	8000694 <fsm_manual_run+0xb8>
-			break;
+				break;
  800068e:	bf00      	nop
  8000690:	e000      	b.n	8000694 <fsm_manual_run+0xb8>
-			break;
+				break;
  8000692:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M2_3){
+			switch(Stat_M2_3){
  8000694:	4b77      	ldr	r3, [pc, #476]	; (8000874 <fsm_manual_run+0x298>)
  8000696:	681b      	ldr	r3, [r3, #0]
  8000698:	2b02      	cmp	r3, #2
@@ -915,52 +915,52 @@ void fsm_manual_run(){
  80006a2:	d002      	beq.n	80006aa <fsm_manual_run+0xce>
  80006a4:	2b01      	cmp	r3, #1
  80006a6:	d00f      	beq.n	80006c8 <fsm_manual_run+0xec>
-				//AUTO_RED = temp_RED;
-				mode = MODE1;
-				Setup();
-				break;
-			default:
-				break;
+					//AUTO_RED = temp_RED;
+					mode = MODE1;
+					Setup();
+					break;
+				default:
+					break;
  80006a8:	e030      	b.n	800070c <fsm_manual_run+0x130>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  80006aa:	2001      	movs	r0, #1
  80006ac:	f7ff fd4e 	bl	800014c <isButtonPressed>
  80006b0:	4603      	mov	r3, r0
  80006b2:	2b01      	cmp	r3, #1
  80006b4:	d12c      	bne.n	8000710 <fsm_manual_run+0x134>
-					Stat_M2_3 = INCREASE;
+						Stat_M2_3 = INCREASE;
  80006b6:	4b6f      	ldr	r3, [pc, #444]	; (8000874 <fsm_manual_run+0x298>)
  80006b8:	2201      	movs	r2, #1
  80006ba:	601a      	str	r2, [r3, #0]
-					AUTO_RED++;
+						AUTO_RED++;
  80006bc:	4b6c      	ldr	r3, [pc, #432]	; (8000870 <fsm_manual_run+0x294>)
  80006be:	681b      	ldr	r3, [r3, #0]
  80006c0:	3301      	adds	r3, #1
  80006c2:	4a6b      	ldr	r2, [pc, #428]	; (8000870 <fsm_manual_run+0x294>)
  80006c4:	6013      	str	r3, [r2, #0]
-				break;
+					break;
  80006c6:	e023      	b.n	8000710 <fsm_manual_run+0x134>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  80006c8:	2001      	movs	r0, #1
  80006ca:	f7ff fd3f 	bl	800014c <isButtonPressed>
  80006ce:	4603      	mov	r3, r0
  80006d0:	2b01      	cmp	r3, #1
  80006d2:	d10b      	bne.n	80006ec <fsm_manual_run+0x110>
-					AUTO_RED++;
+						AUTO_RED++;
  80006d4:	4b66      	ldr	r3, [pc, #408]	; (8000870 <fsm_manual_run+0x294>)
  80006d6:	681b      	ldr	r3, [r3, #0]
  80006d8:	3301      	adds	r3, #1
  80006da:	4a65      	ldr	r2, [pc, #404]	; (8000870 <fsm_manual_run+0x294>)
  80006dc:	6013      	str	r3, [r2, #0]
-					if(AUTO_RED >= MAX_COUNT) AUTO_RED = MAX_COUNT;
+						if(AUTO_RED > MAX_COUNT) AUTO_RED = MAX_COUNT;
  80006de:	4b64      	ldr	r3, [pc, #400]	; (8000870 <fsm_manual_run+0x294>)
  80006e0:	681b      	ldr	r3, [r3, #0]
- 80006e2:	2b62      	cmp	r3, #98	; 0x62
+ 80006e2:	2b63      	cmp	r3, #99	; 0x63
  80006e4:	dd02      	ble.n	80006ec <fsm_manual_run+0x110>
  80006e6:	4b62      	ldr	r3, [pc, #392]	; (8000870 <fsm_manual_run+0x294>)
  80006e8:	2263      	movs	r2, #99	; 0x63
  80006ea:	601a      	str	r2, [r3, #0]
-				if(isButtonPressed(BUTTON3) == 1) Stat_M2_3 = SAVE;
+					if(isButtonPressed(BUTTON3) == 1) Stat_M2_3 = SAVE;
  80006ec:	2002      	movs	r0, #2
  80006ee:	f7ff fd2d 	bl	800014c <isButtonPressed>
  80006f2:	4603      	mov	r3, r0
@@ -969,27 +969,27 @@ void fsm_manual_run(){
  80006f8:	4b5e      	ldr	r3, [pc, #376]	; (8000874 <fsm_manual_run+0x298>)
  80006fa:	2202      	movs	r2, #2
  80006fc:	601a      	str	r2, [r3, #0]
-				break;
+					break;
  80006fe:	e009      	b.n	8000714 <fsm_manual_run+0x138>
-				mode = MODE1;
+					mode = MODE1;
  8000700:	4b56      	ldr	r3, [pc, #344]	; (800085c <fsm_manual_run+0x280>)
  8000702:	2201      	movs	r2, #1
  8000704:	601a      	str	r2, [r3, #0]
-				Setup();
+					Setup();
  8000706:	f000 f99b 	bl	8000a40 <Setup>
-				break;
+					break;
  800070a:	e004      	b.n	8000716 <fsm_manual_run+0x13a>
-				break;
+					break;
  800070c:	bf00      	nop
  800070e:	e002      	b.n	8000716 <fsm_manual_run+0x13a>
-				break;
+					break;
  8000710:	bf00      	nop
  8000712:	e000      	b.n	8000716 <fsm_manual_run+0x13a>
-				break;
+					break;
  8000714:	bf00      	nop
-		}
+			}
 
-		if(isButtonPressed(BUTTON1) == 1) mode = MODE3;
+			if(isButtonPressed(BUTTON1) == 1) mode = MODE3;
  8000716:	2000      	movs	r0, #0
  8000718:	f7ff fd18 	bl	800014c <isButtonPressed>
  800071c:	4603      	mov	r3, r0
@@ -998,51 +998,51 @@ void fsm_manual_run(){
  8000722:	4b4e      	ldr	r3, [pc, #312]	; (800085c <fsm_manual_run+0x280>)
  8000724:	2203      	movs	r2, #3
  8000726:	601a      	str	r2, [r3, #0]
-	}
+		}
 
-	if(mode == MODE3){
+		if(mode == MODE3){
  8000728:	4b4c      	ldr	r3, [pc, #304]	; (800085c <fsm_manual_run+0x280>)
  800072a:	681b      	ldr	r3, [r3, #0]
  800072c:	2b03      	cmp	r3, #3
  800072e:	f040 80b9 	bne.w	80008a4 <fsm_manual_run+0x2c8>
-		switch(Stat_M3_1){
+			switch(Stat_M3_1){
  8000732:	4b51      	ldr	r3, [pc, #324]	; (8000878 <fsm_manual_run+0x29c>)
  8000734:	681b      	ldr	r3, [r3, #0]
  8000736:	2b00      	cmp	r3, #0
  8000738:	d002      	beq.n	8000740 <fsm_manual_run+0x164>
  800073a:	2b01      	cmp	r3, #1
  800073c:	d007      	beq.n	800074e <fsm_manual_run+0x172>
-				RIDE_ON();
-				setTimer6(50);
-			}
-			break;
-		default:
-			break;
+					RIDE_ON();
+					setTimer6(50);
+				}
+				break;
+			default:
+				break;
  800073e:	e010      	b.n	8000762 <fsm_manual_run+0x186>
-			Stat_M3_1 = BLINK;
+				Stat_M3_1 = BLINK;
  8000740:	4b4d      	ldr	r3, [pc, #308]	; (8000878 <fsm_manual_run+0x29c>)
  8000742:	2201      	movs	r2, #1
  8000744:	601a      	str	r2, [r3, #0]
-			setTimer6(10);
+				setTimer6(10);
  8000746:	200a      	movs	r0, #10
  8000748:	f000 fd6c 	bl	8001224 <setTimer6>
-			break;
+				break;
  800074c:	e009      	b.n	8000762 <fsm_manual_run+0x186>
-			if(timer6_flag == 1){
+				if(timer6_flag == 1){
  800074e:	4b4b      	ldr	r3, [pc, #300]	; (800087c <fsm_manual_run+0x2a0>)
  8000750:	681b      	ldr	r3, [r3, #0]
  8000752:	2b01      	cmp	r3, #1
  8000754:	d104      	bne.n	8000760 <fsm_manual_run+0x184>
-				RIDE_ON();
+					RIDE_ON();
  8000756:	f000 f9e9 	bl	8000b2c <RIDE_ON>
-				setTimer6(50);
+					setTimer6(50);
  800075a:	2032      	movs	r0, #50	; 0x32
  800075c:	f000 fd62 	bl	8001224 <setTimer6>
-			break;
+				break;
  8000760:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M3_2){
+			switch(Stat_M3_2){
  8000762:	4b47      	ldr	r3, [pc, #284]	; (8000880 <fsm_manual_run+0x2a4>)
  8000764:	681b      	ldr	r3, [r3, #0]
  8000766:	2b02      	cmp	r3, #2
@@ -1053,28 +1053,28 @@ void fsm_manual_run(){
  8000770:	d002      	beq.n	8000778 <fsm_manual_run+0x19c>
  8000772:	2b01      	cmp	r3, #1
  8000774:	d007      	beq.n	8000786 <fsm_manual_run+0x1aa>
-				Stat_M2_2 = SEG1;
-				setTimer7(25);
-			}
-			break;
-		default:
-			break;
+					Stat_M2_2 = SEG1;
+					setTimer7(25);
+				}
+				break;
+			default:
+				break;
  8000776:	e02c      	b.n	80007d2 <fsm_manual_run+0x1f6>
-			Stat_M3_2 = SEG1;
+				Stat_M3_2 = SEG1;
  8000778:	4b41      	ldr	r3, [pc, #260]	; (8000880 <fsm_manual_run+0x2a4>)
  800077a:	2201      	movs	r2, #1
  800077c:	601a      	str	r2, [r3, #0]
-			setTimer7(10);
+				setTimer7(10);
  800077e:	200a      	movs	r0, #10
  8000780:	f000 fd64 	bl	800124c <setTimer7>
-			break;
+				break;
  8000784:	e02a      	b.n	80007dc <fsm_manual_run+0x200>
-			if(timer7_flag == 1){
+				if(timer7_flag == 1){
  8000786:	4b3f      	ldr	r3, [pc, #252]	; (8000884 <fsm_manual_run+0x2a8>)
  8000788:	681b      	ldr	r3, [r3, #0]
  800078a:	2b01      	cmp	r3, #1
  800078c:	d123      	bne.n	80007d6 <fsm_manual_run+0x1fa>
-				display_chuc(mode, AUTO_GREEN);
+					display_chuc(mode, AUTO_GREEN);
  800078e:	4b33      	ldr	r3, [pc, #204]	; (800085c <fsm_manual_run+0x280>)
  8000790:	681b      	ldr	r3, [r3, #0]
  8000792:	4a3d      	ldr	r2, [pc, #244]	; (8000888 <fsm_manual_run+0x2ac>)
@@ -1082,21 +1082,21 @@ void fsm_manual_run(){
  8000796:	4611      	mov	r1, r2
  8000798:	4618      	mov	r0, r3
  800079a:	f000 fb4b 	bl	8000e34 <display_chuc>
-				Stat_M3_2 = SEG2;
+					Stat_M3_2 = SEG2;
  800079e:	4b38      	ldr	r3, [pc, #224]	; (8000880 <fsm_manual_run+0x2a4>)
  80007a0:	2202      	movs	r2, #2
  80007a2:	601a      	str	r2, [r3, #0]
-				setTimer7(25);
+					setTimer7(25);
  80007a4:	2019      	movs	r0, #25
  80007a6:	f000 fd51 	bl	800124c <setTimer7>
-			break;
+				break;
  80007aa:	e014      	b.n	80007d6 <fsm_manual_run+0x1fa>
-			if(timer7_flag == 1){
+				if(timer7_flag == 1){
  80007ac:	4b35      	ldr	r3, [pc, #212]	; (8000884 <fsm_manual_run+0x2a8>)
  80007ae:	681b      	ldr	r3, [r3, #0]
  80007b0:	2b01      	cmp	r3, #1
  80007b2:	d112      	bne.n	80007da <fsm_manual_run+0x1fe>
-				display_don_vi(mode, AUTO_GREEN);
+					display_don_vi(mode, AUTO_GREEN);
  80007b4:	4b29      	ldr	r3, [pc, #164]	; (800085c <fsm_manual_run+0x280>)
  80007b6:	681b      	ldr	r3, [r3, #0]
  80007b8:	4a33      	ldr	r2, [pc, #204]	; (8000888 <fsm_manual_run+0x2ac>)
@@ -1104,26 +1104,26 @@ void fsm_manual_run(){
  80007bc:	4611      	mov	r1, r2
  80007be:	4618      	mov	r0, r3
  80007c0:	f000 fb72 	bl	8000ea8 <display_don_vi>
-				Stat_M2_2 = SEG1;
+					Stat_M2_2 = SEG1;
  80007c4:	4b28      	ldr	r3, [pc, #160]	; (8000868 <fsm_manual_run+0x28c>)
  80007c6:	2201      	movs	r2, #1
  80007c8:	601a      	str	r2, [r3, #0]
-				setTimer7(25);
+					setTimer7(25);
  80007ca:	2019      	movs	r0, #25
  80007cc:	f000 fd3e 	bl	800124c <setTimer7>
-			break;
+				break;
  80007d0:	e003      	b.n	80007da <fsm_manual_run+0x1fe>
-			break;
+				break;
  80007d2:	bf00      	nop
  80007d4:	e002      	b.n	80007dc <fsm_manual_run+0x200>
-			break;
+				break;
  80007d6:	bf00      	nop
  80007d8:	e000      	b.n	80007dc <fsm_manual_run+0x200>
-			break;
+				break;
  80007da:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M3_3){
+			switch(Stat_M3_3){
  80007dc:	4b2b      	ldr	r3, [pc, #172]	; (800088c <fsm_manual_run+0x2b0>)
  80007de:	681b      	ldr	r3, [r3, #0]
  80007e0:	2b02      	cmp	r3, #2
@@ -1134,44 +1134,44 @@ void fsm_manual_run(){
  80007ea:	d002      	beq.n	80007f2 <fsm_manual_run+0x216>
  80007ec:	2b01      	cmp	r3, #1
  80007ee:	d00f      	beq.n	8000810 <fsm_manual_run+0x234>
-				//AUTO_GREEN = temp_GREEN;
-				mode = MODE1;
-				Setup();
-				break;
-			default:
-				break;
+					//AUTO_GREEN = temp_GREEN;
+					mode = MODE1;
+					Setup();
+					break;
+				default:
+					break;
  80007f0:	e030      	b.n	8000854 <fsm_manual_run+0x278>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  80007f2:	2001      	movs	r0, #1
  80007f4:	f7ff fcaa 	bl	800014c <isButtonPressed>
  80007f8:	4603      	mov	r3, r0
  80007fa:	2b01      	cmp	r3, #1
  80007fc:	d12c      	bne.n	8000858 <fsm_manual_run+0x27c>
-					Stat_M3_3 = INCREASE;
+						Stat_M3_3 = INCREASE;
  80007fe:	4b23      	ldr	r3, [pc, #140]	; (800088c <fsm_manual_run+0x2b0>)
  8000800:	2201      	movs	r2, #1
  8000802:	601a      	str	r2, [r3, #0]
-					AUTO_GREEN++;
+						AUTO_GREEN++;
  8000804:	4b20      	ldr	r3, [pc, #128]	; (8000888 <fsm_manual_run+0x2ac>)
  8000806:	681b      	ldr	r3, [r3, #0]
  8000808:	3301      	adds	r3, #1
  800080a:	4a1f      	ldr	r2, [pc, #124]	; (8000888 <fsm_manual_run+0x2ac>)
  800080c:	6013      	str	r3, [r2, #0]
-				break;
+					break;
  800080e:	e023      	b.n	8000858 <fsm_manual_run+0x27c>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  8000810:	2001      	movs	r0, #1
  8000812:	f7ff fc9b 	bl	800014c <isButtonPressed>
  8000816:	4603      	mov	r3, r0
  8000818:	2b01      	cmp	r3, #1
  800081a:	d10b      	bne.n	8000834 <fsm_manual_run+0x258>
-					AUTO_GREEN++;
+						AUTO_GREEN++;
  800081c:	4b1a      	ldr	r3, [pc, #104]	; (8000888 <fsm_manual_run+0x2ac>)
  800081e:	681b      	ldr	r3, [r3, #0]
  8000820:	3301      	adds	r3, #1
  8000822:	4a19      	ldr	r2, [pc, #100]	; (8000888 <fsm_manual_run+0x2ac>)
  8000824:	6013      	str	r3, [r2, #0]
-					if(AUTO_GREEN >= MAX_COUNT) AUTO_GREEN = MAX_COUNT;
+						if(AUTO_GREEN >= MAX_COUNT) AUTO_GREEN = MAX_COUNT;
  8000826:	4b18      	ldr	r3, [pc, #96]	; (8000888 <fsm_manual_run+0x2ac>)
  8000828:	681b      	ldr	r3, [r3, #0]
  800082a:	2b62      	cmp	r3, #98	; 0x62
@@ -1179,7 +1179,7 @@ void fsm_manual_run(){
  800082e:	4b16      	ldr	r3, [pc, #88]	; (8000888 <fsm_manual_run+0x2ac>)
  8000830:	2263      	movs	r2, #99	; 0x63
  8000832:	601a      	str	r2, [r3, #0]
-				if(isButtonPressed(BUTTON3) == 1) Stat_M3_3 = SAVE;
+					if(isButtonPressed(BUTTON3) == 1) Stat_M3_3 = SAVE;
  8000834:	2002      	movs	r0, #2
  8000836:	f7ff fc89 	bl	800014c <isButtonPressed>
  800083a:	4603      	mov	r3, r0
@@ -1188,20 +1188,20 @@ void fsm_manual_run(){
  8000840:	4b12      	ldr	r3, [pc, #72]	; (800088c <fsm_manual_run+0x2b0>)
  8000842:	2202      	movs	r2, #2
  8000844:	601a      	str	r2, [r3, #0]
-				break;
+					break;
  8000846:	e023      	b.n	8000890 <fsm_manual_run+0x2b4>
-				mode = MODE1;
+					mode = MODE1;
  8000848:	4b04      	ldr	r3, [pc, #16]	; (800085c <fsm_manual_run+0x280>)
  800084a:	2201      	movs	r2, #1
  800084c:	601a      	str	r2, [r3, #0]
-				Setup();
+					Setup();
  800084e:	f000 f8f7 	bl	8000a40 <Setup>
-				break;
+					break;
  8000852:	e01e      	b.n	8000892 <fsm_manual_run+0x2b6>
-				break;
+					break;
  8000854:	bf00      	nop
  8000856:	e01c      	b.n	8000892 <fsm_manual_run+0x2b6>
-				break;
+					break;
  8000858:	bf00      	nop
  800085a:	e01a      	b.n	8000892 <fsm_manual_run+0x2b6>
  800085c:	2000007c 	.word	0x2000007c
@@ -1217,11 +1217,11 @@ void fsm_manual_run(){
  8000884:	2000010c 	.word	0x2000010c
  8000888:	200000bc 	.word	0x200000bc
  800088c:	200000a4 	.word	0x200000a4
-				break;
+					break;
  8000890:	bf00      	nop
-		}
+			}
 
-		if(isButtonPressed(BUTTON1) == 1) mode = MODE4;
+			if(isButtonPressed(BUTTON1) == 1) mode = MODE4;
  8000892:	2000      	movs	r0, #0
  8000894:	f7ff fc5a 	bl	800014c <isButtonPressed>
  8000898:	4603      	mov	r3, r0
@@ -1230,51 +1230,51 @@ void fsm_manual_run(){
  800089e:	4b55      	ldr	r3, [pc, #340]	; (80009f4 <fsm_manual_run+0x418>)
  80008a0:	2204      	movs	r2, #4
  80008a2:	601a      	str	r2, [r3, #0]
-	}
+		}
 
-	if(mode == MODE4){
+		if(mode == MODE4){
  80008a4:	4b53      	ldr	r3, [pc, #332]	; (80009f4 <fsm_manual_run+0x418>)
  80008a6:	681b      	ldr	r3, [r3, #0]
  80008a8:	2b04      	cmp	r3, #4
  80008aa:	f040 80a1 	bne.w	80009f0 <fsm_manual_run+0x414>
-		switch(Stat_M4_1){
+			switch(Stat_M4_1){
  80008ae:	4b52      	ldr	r3, [pc, #328]	; (80009f8 <fsm_manual_run+0x41c>)
  80008b0:	681b      	ldr	r3, [r3, #0]
  80008b2:	2b00      	cmp	r3, #0
  80008b4:	d002      	beq.n	80008bc <fsm_manual_run+0x2e0>
  80008b6:	2b01      	cmp	r3, #1
  80008b8:	d007      	beq.n	80008ca <fsm_manual_run+0x2ee>
-				RIDE_ON();
-				setTimer8(50);
-			}
-			break;
-		default:
-			break;
+					RIDE_ON();
+					setTimer8(50);
+				}
+				break;
+			default:
+				break;
  80008ba:	e010      	b.n	80008de <fsm_manual_run+0x302>
-			Stat_M4_1 = BLINK;
+				Stat_M4_1 = BLINK;
  80008bc:	4b4e      	ldr	r3, [pc, #312]	; (80009f8 <fsm_manual_run+0x41c>)
  80008be:	2201      	movs	r2, #1
  80008c0:	601a      	str	r2, [r3, #0]
-			setTimer8(10);
+				setTimer8(10);
  80008c2:	200a      	movs	r0, #10
  80008c4:	f000 fcd6 	bl	8001274 <setTimer8>
-			break;
+				break;
  80008c8:	e009      	b.n	80008de <fsm_manual_run+0x302>
-			if(timer8_flag == 1){
+				if(timer8_flag == 1){
  80008ca:	4b4c      	ldr	r3, [pc, #304]	; (80009fc <fsm_manual_run+0x420>)
  80008cc:	681b      	ldr	r3, [r3, #0]
  80008ce:	2b01      	cmp	r3, #1
  80008d0:	d104      	bne.n	80008dc <fsm_manual_run+0x300>
-				RIDE_ON();
+					RIDE_ON();
  80008d2:	f000 f92b 	bl	8000b2c <RIDE_ON>
-				setTimer8(50);
+					setTimer8(50);
  80008d6:	2032      	movs	r0, #50	; 0x32
  80008d8:	f000 fccc 	bl	8001274 <setTimer8>
-			break;
+				break;
  80008dc:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M4_2){
+			switch(Stat_M4_2){
  80008de:	4b48      	ldr	r3, [pc, #288]	; (8000a00 <fsm_manual_run+0x424>)
  80008e0:	681b      	ldr	r3, [r3, #0]
  80008e2:	2b02      	cmp	r3, #2
@@ -1285,28 +1285,28 @@ void fsm_manual_run(){
  80008ec:	d002      	beq.n	80008f4 <fsm_manual_run+0x318>
  80008ee:	2b01      	cmp	r3, #1
  80008f0:	d007      	beq.n	8000902 <fsm_manual_run+0x326>
-				Stat_M4_2 = SEG1;
-				setTimer9(25);
-			}
-			break;
-		default:
-			break;
+					Stat_M4_2 = SEG1;
+					setTimer9(25);
+				}
+				break;
+			default:
+				break;
  80008f2:	e02c      	b.n	800094e <fsm_manual_run+0x372>
-			Stat_M4_2 = SEG1;
+				Stat_M4_2 = SEG1;
  80008f4:	4b42      	ldr	r3, [pc, #264]	; (8000a00 <fsm_manual_run+0x424>)
  80008f6:	2201      	movs	r2, #1
  80008f8:	601a      	str	r2, [r3, #0]
-			setTimer9(10);
+				setTimer9(10);
  80008fa:	200a      	movs	r0, #10
  80008fc:	f000 fcce 	bl	800129c <setTimer9>
-			break;
+				break;
  8000900:	e02a      	b.n	8000958 <fsm_manual_run+0x37c>
-			if(timer7_flag == 1){
+				if(timer7_flag == 1){
  8000902:	4b40      	ldr	r3, [pc, #256]	; (8000a04 <fsm_manual_run+0x428>)
  8000904:	681b      	ldr	r3, [r3, #0]
  8000906:	2b01      	cmp	r3, #1
  8000908:	d123      	bne.n	8000952 <fsm_manual_run+0x376>
-				display_chuc(mode, AUTO_YELLOW);
+					display_chuc(mode, AUTO_YELLOW);
  800090a:	4b3a      	ldr	r3, [pc, #232]	; (80009f4 <fsm_manual_run+0x418>)
  800090c:	681b      	ldr	r3, [r3, #0]
  800090e:	4a3e      	ldr	r2, [pc, #248]	; (8000a08 <fsm_manual_run+0x42c>)
@@ -1314,21 +1314,21 @@ void fsm_manual_run(){
  8000912:	4611      	mov	r1, r2
  8000914:	4618      	mov	r0, r3
  8000916:	f000 fa8d 	bl	8000e34 <display_chuc>
-				Stat_M4_2 = SEG2;
+					Stat_M4_2 = SEG2;
  800091a:	4b39      	ldr	r3, [pc, #228]	; (8000a00 <fsm_manual_run+0x424>)
  800091c:	2202      	movs	r2, #2
  800091e:	601a      	str	r2, [r3, #0]
-				setTimer9(25);
+					setTimer9(25);
  8000920:	2019      	movs	r0, #25
  8000922:	f000 fcbb 	bl	800129c <setTimer9>
-			break;
+				break;
  8000926:	e014      	b.n	8000952 <fsm_manual_run+0x376>
-			if(timer9_flag == 1){
+				if(timer9_flag == 1){
  8000928:	4b38      	ldr	r3, [pc, #224]	; (8000a0c <fsm_manual_run+0x430>)
  800092a:	681b      	ldr	r3, [r3, #0]
  800092c:	2b01      	cmp	r3, #1
  800092e:	d112      	bne.n	8000956 <fsm_manual_run+0x37a>
-				display_don_vi(mode, AUTO_YELLOW);
+					display_don_vi(mode, AUTO_YELLOW);
  8000930:	4b30      	ldr	r3, [pc, #192]	; (80009f4 <fsm_manual_run+0x418>)
  8000932:	681b      	ldr	r3, [r3, #0]
  8000934:	4a34      	ldr	r2, [pc, #208]	; (8000a08 <fsm_manual_run+0x42c>)
@@ -1336,26 +1336,26 @@ void fsm_manual_run(){
  8000938:	4611      	mov	r1, r2
  800093a:	4618      	mov	r0, r3
  800093c:	f000 fab4 	bl	8000ea8 <display_don_vi>
-				Stat_M4_2 = SEG1;
+					Stat_M4_2 = SEG1;
  8000940:	4b2f      	ldr	r3, [pc, #188]	; (8000a00 <fsm_manual_run+0x424>)
  8000942:	2201      	movs	r2, #1
  8000944:	601a      	str	r2, [r3, #0]
-				setTimer9(25);
+					setTimer9(25);
  8000946:	2019      	movs	r0, #25
  8000948:	f000 fca8 	bl	800129c <setTimer9>
-			break;
+				break;
  800094c:	e003      	b.n	8000956 <fsm_manual_run+0x37a>
-			break;
+				break;
  800094e:	bf00      	nop
  8000950:	e002      	b.n	8000958 <fsm_manual_run+0x37c>
-			break;
+				break;
  8000952:	bf00      	nop
  8000954:	e000      	b.n	8000958 <fsm_manual_run+0x37c>
-			break;
+				break;
  8000956:	bf00      	nop
-		}
+			}
 
-		switch(Stat_M4_3){
+			switch(Stat_M4_3){
  8000958:	4b2d      	ldr	r3, [pc, #180]	; (8000a10 <fsm_manual_run+0x434>)
  800095a:	681b      	ldr	r3, [r3, #0]
  800095c:	2b02      	cmp	r3, #2
@@ -1366,44 +1366,44 @@ void fsm_manual_run(){
  8000966:	d002      	beq.n	800096e <fsm_manual_run+0x392>
  8000968:	2b01      	cmp	r3, #1
  800096a:	d00f      	beq.n	800098c <fsm_manual_run+0x3b0>
-				//AUTO_RED = temp_YELLOW;
-				mode = MODE1;
-				Setup();
-				break;
-			default:
-				break;
+					//AUTO_RED = temp_YELLOW;
+					mode = MODE1;
+					Setup();
+					break;
+				default:
+					break;
  800096c:	e030      	b.n	80009d0 <fsm_manual_run+0x3f4>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  800096e:	2001      	movs	r0, #1
  8000970:	f7ff fbec 	bl	800014c <isButtonPressed>
  8000974:	4603      	mov	r3, r0
  8000976:	2b01      	cmp	r3, #1
  8000978:	d12c      	bne.n	80009d4 <fsm_manual_run+0x3f8>
-					Stat_M4_3 = INCREASE;
+						Stat_M4_3 = INCREASE;
  800097a:	4b25      	ldr	r3, [pc, #148]	; (8000a10 <fsm_manual_run+0x434>)
  800097c:	2201      	movs	r2, #1
  800097e:	601a      	str	r2, [r3, #0]
-					AUTO_YELLOW++;
+						AUTO_YELLOW++;
  8000980:	4b21      	ldr	r3, [pc, #132]	; (8000a08 <fsm_manual_run+0x42c>)
  8000982:	681b      	ldr	r3, [r3, #0]
  8000984:	3301      	adds	r3, #1
  8000986:	4a20      	ldr	r2, [pc, #128]	; (8000a08 <fsm_manual_run+0x42c>)
  8000988:	6013      	str	r3, [r2, #0]
-				break;
+					break;
  800098a:	e023      	b.n	80009d4 <fsm_manual_run+0x3f8>
-				if(isButtonPressed(BUTTON2) == 1){
+					if(isButtonPressed(BUTTON2) == 1){
  800098c:	2001      	movs	r0, #1
  800098e:	f7ff fbdd 	bl	800014c <isButtonPressed>
  8000992:	4603      	mov	r3, r0
  8000994:	2b01      	cmp	r3, #1
  8000996:	d10b      	bne.n	80009b0 <fsm_manual_run+0x3d4>
-					AUTO_YELLOW++;
+						AUTO_YELLOW++;
  8000998:	4b1b      	ldr	r3, [pc, #108]	; (8000a08 <fsm_manual_run+0x42c>)
  800099a:	681b      	ldr	r3, [r3, #0]
  800099c:	3301      	adds	r3, #1
  800099e:	4a1a      	ldr	r2, [pc, #104]	; (8000a08 <fsm_manual_run+0x42c>)
  80009a0:	6013      	str	r3, [r2, #0]
-					if(AUTO_YELLOW >= MAX_COUNT) AUTO_YELLOW = MAX_COUNT;
+						if(AUTO_YELLOW >= MAX_COUNT) AUTO_YELLOW = MAX_COUNT;
  80009a2:	4b19      	ldr	r3, [pc, #100]	; (8000a08 <fsm_manual_run+0x42c>)
  80009a4:	681b      	ldr	r3, [r3, #0]
  80009a6:	2b62      	cmp	r3, #98	; 0x62
@@ -1411,7 +1411,7 @@ void fsm_manual_run(){
  80009aa:	4b17      	ldr	r3, [pc, #92]	; (8000a08 <fsm_manual_run+0x42c>)
  80009ac:	2263      	movs	r2, #99	; 0x63
  80009ae:	601a      	str	r2, [r3, #0]
-				if(isButtonPressed(BUTTON3) == 1) Stat_M4_3 = SAVE;
+					if(isButtonPressed(BUTTON3) == 1) Stat_M4_3 = SAVE;
  80009b0:	2002      	movs	r0, #2
  80009b2:	f7ff fbcb 	bl	800014c <isButtonPressed>
  80009b6:	4603      	mov	r3, r0
@@ -1420,40 +1420,40 @@ void fsm_manual_run(){
  80009bc:	4b14      	ldr	r3, [pc, #80]	; (8000a10 <fsm_manual_run+0x434>)
  80009be:	2202      	movs	r2, #2
  80009c0:	601a      	str	r2, [r3, #0]
-				break;
+					break;
  80009c2:	e009      	b.n	80009d8 <fsm_manual_run+0x3fc>
-				mode = MODE1;
+					mode = MODE1;
  80009c4:	4b0b      	ldr	r3, [pc, #44]	; (80009f4 <fsm_manual_run+0x418>)
  80009c6:	2201      	movs	r2, #1
  80009c8:	601a      	str	r2, [r3, #0]
-				Setup();
+					Setup();
  80009ca:	f000 f839 	bl	8000a40 <Setup>
-				break;
+					break;
  80009ce:	e004      	b.n	80009da <fsm_manual_run+0x3fe>
-				break;
+					break;
  80009d0:	bf00      	nop
  80009d2:	e002      	b.n	80009da <fsm_manual_run+0x3fe>
-				break;
+					break;
  80009d4:	bf00      	nop
  80009d6:	e000      	b.n	80009da <fsm_manual_run+0x3fe>
-				break;
+					break;
  80009d8:	bf00      	nop
-		}
+			}
 
-		if(isButtonPressed(BUTTON1) == 1){
+			if(isButtonPressed(BUTTON1) == 1){
  80009da:	2000      	movs	r0, #0
  80009dc:	f7ff fbb6 	bl	800014c <isButtonPressed>
  80009e0:	4603      	mov	r3, r0
  80009e2:	2b01      	cmp	r3, #1
  80009e4:	d104      	bne.n	80009f0 <fsm_manual_run+0x414>
-			mode = MODE1;
+				mode = MODE1;
  80009e6:	4b03      	ldr	r3, [pc, #12]	; (80009f4 <fsm_manual_run+0x418>)
  80009e8:	2201      	movs	r2, #1
  80009ea:	601a      	str	r2, [r3, #0]
-			Setup();
+				Setup();
  80009ec:	f000 f828 	bl	8000a40 <Setup>
+			}
 		}
-	}
 }
  80009f0:	bf00      	nop
  80009f2:	bd80      	pop	{r7, pc}
@@ -2185,7 +2185,6 @@ int main(void)
  8000f3c:	f000 f84c 	bl	8000fd8 <MX_TIM2_Init>
   MX_GPIO_Init();
  8000f40:	f000 f896 	bl	8001070 <MX_GPIO_Init>
-
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT (&htim2);
  8000f44:	4805      	ldr	r0, [pc, #20]	; (8000f5c <main+0x2c>)
@@ -2519,8 +2518,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
  800110e:	2300      	movs	r3, #0
  8001110:	60fb      	str	r3, [r7, #12]
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
- 8001112:	2300      	movs	r3, #0
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+ 8001112:	2301      	movs	r3, #1
  8001114:	613b      	str	r3, [r7, #16]
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
  8001116:	f107 0308 	add.w	r3, r7, #8

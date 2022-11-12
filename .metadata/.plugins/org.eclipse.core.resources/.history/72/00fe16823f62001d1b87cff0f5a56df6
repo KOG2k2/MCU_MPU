@@ -1,0 +1,25 @@
+/*
+ * scheduler.c
+ *
+ *  Created on: Nov 12, 2022
+ *      Author: Admin
+ */
+#include "scheduler.h"
+#include <stdint.h>
+
+
+typedef struct{
+	void (*pTask)(void);
+	uint32_t 	Delay;
+	uint32_t 	Period;
+	uint8_t 	RunMe;
+
+	uint32_t 	TaskID;
+}sTasks;
+
+#define SCH_MAX_TASKS	40
+
+sTasks SCH_tasks_G[SCH_MAX_TASKS];
+uint8_t current_index_task = 0;
+
+

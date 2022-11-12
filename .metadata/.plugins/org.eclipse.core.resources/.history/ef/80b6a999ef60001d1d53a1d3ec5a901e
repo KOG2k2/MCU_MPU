@@ -1,0 +1,17 @@
+/*
+ * button.c
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#include "main.h"
+#include "global.h"
+
+#define NORMAL_STATE SET
+#define PRESSED_STATE RESET
+
+int isButtonPressed(int index);
+
+void subKeyProcess(int index);;
+void getKeyInput();

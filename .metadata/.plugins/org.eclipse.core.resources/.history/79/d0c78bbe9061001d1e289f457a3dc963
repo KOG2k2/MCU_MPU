@@ -1,0 +1,100 @@
+/*
+ * led_disp.c
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#include "led_disp.h"
+
+int leds[NUM_OF_LED] = {RED12_Pin, RED1_Pin, RED2_Pin, RED3_Pin, RED4_Pin, RED5_Pin, RED6_Pin, RED7_Pin, RED8_Pin, RED9_Pin, RED10_Pin, RED11_Pin};
+
+void clear_All_Clock(int index){
+	HAL_GPIO_WritePin(GPIOA, leds[index], SET);
+}
+
+void set_Number_on_Clock(int num){
+    /*switch(num){
+        case 0:
+            HAL_GPIO_WritePin(RED12_GPIO_Port, RED12_Pin, RESET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, RESET);
+            break;
+        case 2:
+            HAL_GPIO_WritePin(RED2_GPIO_Port, RED2_Pin, RESET);
+            break;
+        case 3:
+            HAL_GPIO_WritePin(RED3_GPIO_Port, RED3_Pin, RESET);
+            break;
+        case 4:
+            HAL_GPIO_WritePin(RED4_GPIO_Port, RED4_Pin, RESET);
+            break;
+        case 5:
+            HAL_GPIO_WritePin(RED5_GPIO_Port, RED5_Pin, RESET);
+            break;
+        case 6:
+            HAL_GPIO_WritePin(RED6_GPIO_Port, RED6_Pin, RESET);
+            break;
+        case 7:
+            HAL_GPIO_WritePin(RED7_GPIO_Port, RED7_Pin, RESET);
+            break;
+        case 8:
+            HAL_GPIO_WritePin(RED8_GPIO_Port, RED8_Pin, RESET);
+            break;
+        case 9:
+            HAL_GPIO_WritePin(RED9_GPIO_Port, RED9_Pin, RESET);
+            break;
+        case 10:
+            HAL_GPIO_WritePin(RED10_GPIO_Port, RED10_Pin, RESET);
+            break;
+        case 11:
+            HAL_GPIO_WritePin(RED11_GPIO_Port, RED11_Pin, RESET);
+            break;
+        default:
+            break;
+    }*/
+}
+
+void clear_Number_on_Clock(int num){
+    switch(num){
+        case 0:
+            HAL_GPIO_WritePin(RED12_GPIO_Port, RED12_Pin, SET);
+            break;
+        case 1:
+            HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, SET);
+            break;
+        case 2:
+            HAL_GPIO_WritePin(RED2_GPIO_Port, RED2_Pin, SET);
+            break;
+        case 3:
+            HAL_GPIO_WritePin(RED3_GPIO_Port, RED3_Pin, SET);
+            break;
+        case 4:
+            HAL_GPIO_WritePin(RED4_GPIO_Port, RED4_Pin, SET);
+            break;
+        case 5:
+            HAL_GPIO_WritePin(RED5_GPIO_Port, RED5_Pin, SET);
+            break;
+        case 6:
+            HAL_GPIO_WritePin(RED6_GPIO_Port, RED6_Pin, SET);
+            break;
+        case 7:
+            HAL_GPIO_WritePin(RED7_GPIO_Port, RED7_Pin, SET);
+            break;
+        case 8:
+            HAL_GPIO_WritePin(RED8_GPIO_Port, RED8_Pin, SET);
+            break;
+        case 9:
+            HAL_GPIO_WritePin(RED9_GPIO_Port, RED9_Pin, SET);
+            break;
+        case 10:
+            HAL_GPIO_WritePin(RED10_GPIO_Port, RED10_Pin, SET);
+            break;
+        case 11:
+            HAL_GPIO_WritePin(RED11_GPIO_Port, RED11_Pin, SET);
+            break;
+        default:
+            break;
+    }
+}

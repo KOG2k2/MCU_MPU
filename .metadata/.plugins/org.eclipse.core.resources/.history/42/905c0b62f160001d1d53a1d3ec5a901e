@@ -1,0 +1,15 @@
+/*
+ * led_disp.h
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_LED_DISP_H_
+#define INC_LED_DISP_H_
+
+void RIDE_ON();
+void toggleGREENs();
+void toggleYELLOWs();
+
+#endif /* INC_LED_DISP_H_ */

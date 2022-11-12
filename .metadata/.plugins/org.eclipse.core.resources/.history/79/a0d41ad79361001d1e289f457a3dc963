@@ -1,0 +1,31 @@
+/*
+ * fsm_auto.h
+ *
+ *  Created on: Nov 10, 2022
+ *      Author: Admin
+ */
+
+#ifndef INC_FSM_AUTO_H_
+#define INC_FSM_AUTO_H_
+
+#include "led_disp.h"
+#include "software_timer.h"
+
+#define INITIAL_STATE 0
+
+#define SECOND_COUNT 60
+#define MINUTE_COUNT 60
+#define HOUR_COUNT 12
+
+#define MODE_CHANGE 0
+#define
+
+extern int Second_count;
+extern int Minute_count;
+extern int Hour_count;
+
+extern int mode;
+
+void clock_auto_run();
+
+#endif /* INC_FSM_AUTO_H_ */
