@@ -62,6 +62,18 @@ void fsm_auto_run(){
 			north_traffic = GREEN_ON;
 			setTimer2(100);
 			break;
+		case RED_ON:
+			if(timer2_flag == 1){
+				enableRED_NORTH();
+				SEG7_buffer[1] = counterRED_NORTH;
+				counterRED_WEST--;
+				if(counterRED_NORTH == INIT){
+					counterRED_NORTH = AUTO_RED;
+					north_traffic = GREEN_ON;
+				}
+				setTimer2(100);
+			}
+			break;
 		case GREEN_ON:
 			if(timer2_flag == 1){
 				enableGREEN_NORTH();
@@ -82,18 +94,6 @@ void fsm_auto_run(){
 				if(counterYELLOW_NORTH == INIT){
 					counterYELLOW_NORTH = AUTO_YELLOW;
 					north_traffic = RED_ON;
-				}
-				setTimer2(100);
-			}
-			break;
-		case RED_ON:
-			if(timer2_flag == 1){
-				enableRED_NORTH();
-				SEG7_buffer[1] = counterRED_NORTH;
-				counterRED_NORTH--;
-				if(counterRED_NORTH == INIT){
-					counterRED_NORTH = AUTO_RED;
-					north_traffic = GREEN_ON;
 				}
 				setTimer2(100);
 			}

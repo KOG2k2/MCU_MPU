@@ -90,7 +90,7 @@ void fsm_auto_run(){
 			if(timer2_flag == 1){
 				enableRED_NORTH();
 				SEG7_buffer[1] = counterRED_NORTH;
-				counterRED_NORTH--;
+				counterRED_WEST--;
 				if(counterRED_NORTH == INIT){
 					counterRED_NORTH = AUTO_RED;
 					north_traffic = GREEN_ON;

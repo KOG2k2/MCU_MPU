@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00016d0f  00000000  00000000  0002cc90  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000bbc2  00000000  00000000  0004399f  2**0
+ 17 .debug_line   0000bbc4  00000000  00000000  0004399f  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00082502  00000000  00000000  0004f561  2**0
+ 18 .debug_str    00082502  00000000  00000000  0004f563  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d1a63  2**0
+ 19 .comment      00000053  00000000  00000000  000d1a65  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00002a2c  00000000  00000000  000d1ab8  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -441,9 +441,9 @@ void fsm_auto_run(){
  80003a6:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
  80003aa:	bf00      	nop
  80003ac:	080003bd 	.word	0x080003bd
- 80003b0:	080003cb 	.word	0x080003cb
- 80003b4:	08000407 	.word	0x08000407
- 80003b8:	08000443 	.word	0x08000443
+ 80003b0:	08000443 	.word	0x08000443
+ 80003b4:	080003cb 	.word	0x080003cb
+ 80003b8:	08000407 	.word	0x08000407
 		case INIT:
 			north_traffic = GREEN_ON;
  80003bc:	4b5b      	ldr	r3, [pc, #364]	; (800052c <fsm_auto_run+0x28c>)
@@ -454,38 +454,38 @@ void fsm_auto_run(){
  80003c4:	f000 fede 	bl	8001184 <setTimer2>
 			break;
  80003c8:	e060      	b.n	800048c <fsm_auto_run+0x1ec>
-		case RED_ON:
+		case GREEN_ON:
 			if(timer2_flag == 1){
  80003ca:	4b59      	ldr	r3, [pc, #356]	; (8000530 <fsm_auto_run+0x290>)
  80003cc:	681b      	ldr	r3, [r3, #0]
  80003ce:	2b01      	cmp	r3, #1
  80003d0:	d157      	bne.n	8000482 <fsm_auto_run+0x1e2>
-				enableRED_NORTH();
- 80003d2:	f000 fc0f 	bl	8000bf4 <enableRED_NORTH>
-				SEG7_buffer[1] = counterRED_NORTH;
+				enableGREEN_NORTH();
+ 80003d2:	f000 fc25 	bl	8000c20 <enableGREEN_NORTH>
+				SEG7_buffer[1] = counterGREEN_NORTH;
  80003d6:	4b57      	ldr	r3, [pc, #348]	; (8000534 <fsm_auto_run+0x294>)
  80003d8:	681b      	ldr	r3, [r3, #0]
  80003da:	4a4e      	ldr	r2, [pc, #312]	; (8000514 <fsm_auto_run+0x274>)
  80003dc:	6053      	str	r3, [r2, #4]
-				counterRED_WEST--;
- 80003de:	4b4c      	ldr	r3, [pc, #304]	; (8000510 <fsm_auto_run+0x270>)
+				counterGREEN_NORTH--;
+ 80003de:	4b55      	ldr	r3, [pc, #340]	; (8000534 <fsm_auto_run+0x294>)
  80003e0:	681b      	ldr	r3, [r3, #0]
  80003e2:	3b01      	subs	r3, #1
- 80003e4:	4a4a      	ldr	r2, [pc, #296]	; (8000510 <fsm_auto_run+0x270>)
+ 80003e4:	4a53      	ldr	r2, [pc, #332]	; (8000534 <fsm_auto_run+0x294>)
  80003e6:	6013      	str	r3, [r2, #0]
-				if(counterRED_NORTH == INIT){
+				if(counterGREEN_NORTH == INIT){
  80003e8:	4b52      	ldr	r3, [pc, #328]	; (8000534 <fsm_auto_run+0x294>)
  80003ea:	681b      	ldr	r3, [r3, #0]
  80003ec:	2b00      	cmp	r3, #0
  80003ee:	d106      	bne.n	80003fe <fsm_auto_run+0x15e>
-					counterRED_NORTH = AUTO_RED;
- 80003f0:	4b49      	ldr	r3, [pc, #292]	; (8000518 <fsm_auto_run+0x278>)
+					counterGREEN_NORTH = AUTO_GREEN;
+ 80003f0:	4b4c      	ldr	r3, [pc, #304]	; (8000524 <fsm_auto_run+0x284>)
  80003f2:	681b      	ldr	r3, [r3, #0]
  80003f4:	4a4f      	ldr	r2, [pc, #316]	; (8000534 <fsm_auto_run+0x294>)
  80003f6:	6013      	str	r3, [r2, #0]
-					north_traffic = GREEN_ON;
+					north_traffic = YELLOW_ON;
  80003f8:	4b4c      	ldr	r3, [pc, #304]	; (800052c <fsm_auto_run+0x28c>)
- 80003fa:	2202      	movs	r2, #2
+ 80003fa:	2203      	movs	r2, #3
  80003fc:	601a      	str	r2, [r3, #0]
 				}
 				setTimer2(100);
@@ -494,38 +494,38 @@ void fsm_auto_run(){
 			}
 			break;
  8000404:	e03d      	b.n	8000482 <fsm_auto_run+0x1e2>
-		case GREEN_ON:
+		case YELLOW_ON:
 			if(timer2_flag == 1){
  8000406:	4b4a      	ldr	r3, [pc, #296]	; (8000530 <fsm_auto_run+0x290>)
  8000408:	681b      	ldr	r3, [r3, #0]
  800040a:	2b01      	cmp	r3, #1
  800040c:	d13b      	bne.n	8000486 <fsm_auto_run+0x1e6>
-				enableGREEN_NORTH();
- 800040e:	f000 fc07 	bl	8000c20 <enableGREEN_NORTH>
-				SEG7_buffer[1] = counterGREEN_NORTH;
+				enableYELLOW_NORTH();
+ 800040e:	f000 fc1d 	bl	8000c4c <enableYELLOW_NORTH>
+				SEG7_buffer[1] = counterYELLOW_NORTH;
  8000412:	4b49      	ldr	r3, [pc, #292]	; (8000538 <fsm_auto_run+0x298>)
  8000414:	681b      	ldr	r3, [r3, #0]
  8000416:	4a3f      	ldr	r2, [pc, #252]	; (8000514 <fsm_auto_run+0x274>)
  8000418:	6053      	str	r3, [r2, #4]
-				counterGREEN_NORTH--;
+				counterYELLOW_NORTH--;
  800041a:	4b47      	ldr	r3, [pc, #284]	; (8000538 <fsm_auto_run+0x298>)
  800041c:	681b      	ldr	r3, [r3, #0]
  800041e:	3b01      	subs	r3, #1
  8000420:	4a45      	ldr	r2, [pc, #276]	; (8000538 <fsm_auto_run+0x298>)
  8000422:	6013      	str	r3, [r2, #0]
-				if(counterGREEN_NORTH == INIT){
+				if(counterYELLOW_NORTH == INIT){
  8000424:	4b44      	ldr	r3, [pc, #272]	; (8000538 <fsm_auto_run+0x298>)
  8000426:	681b      	ldr	r3, [r3, #0]
  8000428:	2b00      	cmp	r3, #0
  800042a:	d106      	bne.n	800043a <fsm_auto_run+0x19a>
-					counterGREEN_NORTH = AUTO_GREEN;
- 800042c:	4b3d      	ldr	r3, [pc, #244]	; (8000524 <fsm_auto_run+0x284>)
+					counterYELLOW_NORTH = AUTO_YELLOW;
+ 800042c:	4b3e      	ldr	r3, [pc, #248]	; (8000528 <fsm_auto_run+0x288>)
  800042e:	681b      	ldr	r3, [r3, #0]
  8000430:	4a41      	ldr	r2, [pc, #260]	; (8000538 <fsm_auto_run+0x298>)
  8000432:	6013      	str	r3, [r2, #0]
-					north_traffic = YELLOW_ON;
+					north_traffic = RED_ON;
  8000434:	4b3d      	ldr	r3, [pc, #244]	; (800052c <fsm_auto_run+0x28c>)
- 8000436:	2203      	movs	r2, #3
+ 8000436:	2201      	movs	r2, #1
  8000438:	601a      	str	r2, [r3, #0]
 				}
 				setTimer2(100);
@@ -534,38 +534,38 @@ void fsm_auto_run(){
 			}
 			break;
  8000440:	e021      	b.n	8000486 <fsm_auto_run+0x1e6>
-		case YELLOW_ON:
+		case RED_ON:
 			if(timer2_flag == 1){
  8000442:	4b3b      	ldr	r3, [pc, #236]	; (8000530 <fsm_auto_run+0x290>)
  8000444:	681b      	ldr	r3, [r3, #0]
  8000446:	2b01      	cmp	r3, #1
  8000448:	d11f      	bne.n	800048a <fsm_auto_run+0x1ea>
-				enableYELLOW_NORTH();
- 800044a:	f000 fbff 	bl	8000c4c <enableYELLOW_NORTH>
-				SEG7_buffer[1] = counterYELLOW_NORTH;
+				enableRED_NORTH();
+ 800044a:	f000 fbd3 	bl	8000bf4 <enableRED_NORTH>
+				SEG7_buffer[1] = counterRED_NORTH;
  800044e:	4b3b      	ldr	r3, [pc, #236]	; (800053c <fsm_auto_run+0x29c>)
  8000450:	681b      	ldr	r3, [r3, #0]
  8000452:	4a30      	ldr	r2, [pc, #192]	; (8000514 <fsm_auto_run+0x274>)
  8000454:	6053      	str	r3, [r2, #4]
-				counterYELLOW_NORTH--;
+				counterRED_NORTH--;
  8000456:	4b39      	ldr	r3, [pc, #228]	; (800053c <fsm_auto_run+0x29c>)
  8000458:	681b      	ldr	r3, [r3, #0]
  800045a:	3b01      	subs	r3, #1
  800045c:	4a37      	ldr	r2, [pc, #220]	; (800053c <fsm_auto_run+0x29c>)
  800045e:	6013      	str	r3, [r2, #0]
-				if(counterYELLOW_NORTH == INIT){
+				if(counterRED_NORTH == INIT){
  8000460:	4b36      	ldr	r3, [pc, #216]	; (800053c <fsm_auto_run+0x29c>)
  8000462:	681b      	ldr	r3, [r3, #0]
  8000464:	2b00      	cmp	r3, #0
  8000466:	d106      	bne.n	8000476 <fsm_auto_run+0x1d6>
-					counterYELLOW_NORTH = AUTO_YELLOW;
- 8000468:	4b2f      	ldr	r3, [pc, #188]	; (8000528 <fsm_auto_run+0x288>)
+					counterRED_NORTH = AUTO_RED;
+ 8000468:	4b2b      	ldr	r3, [pc, #172]	; (8000518 <fsm_auto_run+0x278>)
  800046a:	681b      	ldr	r3, [r3, #0]
  800046c:	4a33      	ldr	r2, [pc, #204]	; (800053c <fsm_auto_run+0x29c>)
  800046e:	6013      	str	r3, [r2, #0]
-					north_traffic = RED_ON;
+					north_traffic = GREEN_ON;
  8000470:	4b2e      	ldr	r3, [pc, #184]	; (800052c <fsm_auto_run+0x28c>)
- 8000472:	2201      	movs	r2, #1
+ 8000472:	2202      	movs	r2, #2
  8000474:	601a      	str	r2, [r3, #0]
 				}
 				setTimer2(100);
@@ -677,9 +677,9 @@ void fsm_auto_run(){
  8000528:	200000b8 	.word	0x200000b8
  800052c:	20000084 	.word	0x20000084
  8000530:	200000e4 	.word	0x200000e4
- 8000534:	200000cc 	.word	0x200000cc
- 8000538:	200000d0 	.word	0x200000d0
- 800053c:	200000d4 	.word	0x200000d4
+ 8000534:	200000d0 	.word	0x200000d0
+ 8000538:	200000d4 	.word	0x200000d4
+ 800053c:	200000cc 	.word	0x200000cc
  8000540:	20000088 	.word	0x20000088
  8000544:	200000ec 	.word	0x200000ec
 			break;
