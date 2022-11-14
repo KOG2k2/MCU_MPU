@@ -84,7 +84,7 @@ void fsm_manual_run(){
 				break;
 			case BLINK:
 				if(timer6_flag == 1){
-					toggleYELLOWs();
+					toggleGREENs();
 					setTimer6(50);
 				}
 				break;

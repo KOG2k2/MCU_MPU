@@ -84,7 +84,7 @@ void fsm_manual_run(){
 				break;
 			case BLINK:
 				if(timer6_flag == 1){
-					toggleYELLOWs();
+					toggleGREENs();
 					setTimer6(50);
 				}
 				break;
@@ -151,7 +151,7 @@ void fsm_manual_run(){
 				break;
 			case BLINK:
 				if(timer8_flag == 1){
-					toggleGREENs();
+					RIDE_ON();
 					setTimer8(50);
 				}
 				break;

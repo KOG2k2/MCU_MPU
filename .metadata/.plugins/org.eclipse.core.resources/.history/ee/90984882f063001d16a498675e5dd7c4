@@ -31,9 +31,9 @@ void fsm_auto_run(){
 			break;
 		case GREEN_ON:
 			if(timer1_flag == 1){
-				enableGREEN_WEST();
-				SEG7_buffer[0] = counterGREEN_WEST;
-				counterGREEN_WEST--;
+			enableGREEN_WEST();
+				SEG7_buffer[0] = counterYELLOW_WEST;
+				counterYELLOW_WEST--;
 				if(counterGREEN_WEST == INIT){
 					counterGREEN_WEST = AUTO_GREEN;
 					west_traffic = YELLOW_ON;

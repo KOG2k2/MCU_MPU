@@ -31,7 +31,7 @@ void fsm_auto_run(){
 			break;
 		case GREEN_ON:
 			if(timer1_flag == 1){
-				enableGREEN_WEST();
+			enableGREEN_WEST();
 				SEG7_buffer[0] = counterGREEN_WEST;
 				counterGREEN_WEST--;
 				if(counterGREEN_WEST == INIT){
