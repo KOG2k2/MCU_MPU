@@ -21023,3 +21023,95 @@ Finished building: testing lab 4.bin
 Finished building: testing lab 4.list
  
  
+22:45:58 **** Incremental Build of configuration Debug for project Lab4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+../Core/Src/scheduler.c:59:30: error: unknown type name 'tByte'
+   59 | void SCH_Delete_Task ( const tByte TASK_INDEX) {
+      |                              ^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/scheduler.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:45:59 **** Incremental Build of configuration Debug for project testing lab 4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+../Core/Src/scheduler.c: In function 'bubbleSort':
+../Core/Src/scheduler.c:25:24: error: incompatible type for argument 1 of 'swap'
+   25 |        swap(SCH_tasks_G[i], SCH_tasks_G[j]);
+      |             ~~~~~~~~~~~^~~
+      |                        |
+      |                        sTasks {aka struct <anonymous>}
+../Core/Src/scheduler.c:16:19: note: expected 'sTasks *' {aka 'struct <anonymous> *'} but argument is of type 'sTasks' {aka 'struct <anonymous>'}
+   16 | void swap(sTasks* item1, sTasks* item2){
+      |           ~~~~~~~~^~~~~
+../Core/Src/scheduler.c:25:40: error: incompatible type for argument 2 of 'swap'
+   25 |        swap(SCH_tasks_G[i], SCH_tasks_G[j]);
+      |                             ~~~~~~~~~~~^~~
+      |                                        |
+      |                                        sTasks {aka struct <anonymous>}
+../Core/Src/scheduler.c:16:34: note: expected 'sTasks *' {aka 'struct <anonymous> *'} but argument is of type 'sTasks' {aka 'struct <anonymous>'}
+   16 | void swap(sTasks* item1, sTasks* item2){
+      |                          ~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/scheduler.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:46:32 **** Incremental Build of configuration Debug for project Lab4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+../Core/Src/scheduler.c:59:30: error: unknown type name 'tByte'
+   59 | void SCH_Delete_Task ( const tByte TASK_INDEX) {
+      |                              ^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/scheduler.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:46:32 **** Incremental Build of configuration Debug for project testing lab 4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+../Core/Src/scheduler.c: In function 'bubbleSort':
+../Core/Src/scheduler.c:25:24: error: incompatible type for argument 1 of 'swap'
+   25 |        swap(SCH_tasks_G[i], SCH_tasks_G[j]);
+      |             ~~~~~~~~~~~^~~
+      |                        |
+      |                        sTasks {aka struct <anonymous>}
+../Core/Src/scheduler.c:16:19: note: expected 'sTasks *' {aka 'struct <anonymous> *'} but argument is of type 'sTasks' {aka 'struct <anonymous>'}
+   16 | void swap(sTasks* item1, sTasks* item2){
+      |           ~~~~~~~~^~~~~
+../Core/Src/scheduler.c:25:40: error: incompatible type for argument 2 of 'swap'
+   25 |        swap(SCH_tasks_G[i], SCH_tasks_G[j]);
+      |                             ~~~~~~~~~~~^~~
+      |                                        |
+      |                                        sTasks {aka struct <anonymous>}
+../Core/Src/scheduler.c:16:34: note: expected 'sTasks *' {aka 'struct <anonymous> *'} but argument is of type 'sTasks' {aka 'struct <anonymous>'}
+   16 | void swap(sTasks* item1, sTasks* item2){
+      |                          ~~~~~~~~^~~~~
+make: *** [Core/Src/subdir.mk:40: Core/Src/scheduler.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:46:59 **** Incremental Build of configuration Debug for project Lab4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+../Core/Src/scheduler.c:59:30: error: unknown type name 'tByte'
+   59 | void SCH_Delete_Task ( const tByte TASK_INDEX) {
+      |                              ^~~~~
+make: *** [Core/Src/subdir.mk:37: Core/Src/scheduler.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+22:46:59 **** Incremental Build of configuration Debug for project testing lab 4 ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/scheduler.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/scheduler.d" -MT"Core/Src/scheduler.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/scheduler.o"
+arm-none-eabi-gcc -o "testing lab 4.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Stm32 version 2\testing lab 4\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="testing lab 4.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: testing lab 4.elf
+ 
+arm-none-eabi-size   testing\ lab\ 4.elf 
+arm-none-eabi-objdump -h -S  testing\ lab\ 4.elf  > "testing lab 4.list"
+arm-none-eabi-objcopy  -O ihex  testing\ lab\ 4.elf  "testing lab 4.hex"
+arm-none-eabi-objcopy  -O binary  testing\ lab\ 4.elf  "testing lab 4.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7968	     20	   2468	  10456	   28d8	testing lab 4.elf
+Finished building: default.size.stdout
+ 
+Finished building: testing lab 4.bin
+Finished building: testing lab 4.hex
+Finished building: testing lab 4.list
+ 
+ 
+ 

@@ -18,7 +18,6 @@ void swap(sTasks* item1, sTasks* item2){
 	*item1 = *item2;
 	*item2 = temp;
 }
-
 void bubbleSort(){
     for(int i = 0; i < current_index_task; i++){
     	for(int j = i + 1; j < current_index_task; j++){

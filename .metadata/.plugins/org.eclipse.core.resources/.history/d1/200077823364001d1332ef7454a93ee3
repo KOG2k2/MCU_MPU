@@ -25,7 +25,6 @@ typedef struct{
 
 void SCH_Init();
 
-void swap(sTasks* item1, sTasks* item2);
 void bubbleSort();
 void assignTaskID();
 
