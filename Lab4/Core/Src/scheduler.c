@@ -32,7 +32,6 @@ void SCH_Add_Task ( void (*pFunction)() , uint32_t DELAY, uint32_t PERIOD){
 
 		SCH_tasks_G[current_index_task].TaskID = current_index_task;
 
-
 		current_index_task++;
 	}
 }

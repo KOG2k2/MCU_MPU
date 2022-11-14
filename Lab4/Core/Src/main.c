@@ -106,11 +106,11 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
 
-  SCH_Add_Task(RED1_ON, 50, 50);
-  /*SCH_Add_Task(RED2_ON, 50, 100);
-  SCH_Add_Task(RED3_ON, 50, 150);
-  SCH_Add_Task(RED4_ON, 50, 200);
-  SCH_Add_Task(RED5_ON, 50, 250);*/
+  SCH_Add_Task(RED1_ON, 0, 100);
+  SCH_Add_Task(RED2_ON, 50, 100);
+  SCH_Add_Task(RED3_ON, 100, 100);
+  SCH_Add_Task(RED4_ON, 150, 100);
+  SCH_Add_Task(RED5_ON, 200, 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
